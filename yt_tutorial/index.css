@@ -1,0 +1,15 @@
+.container {
+  width: 650px;
+  height: 400px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+
+.bar {
+  background-color: turquoise;
+}
+
+.svg-bar {
+  fill: turquoise;
+}
