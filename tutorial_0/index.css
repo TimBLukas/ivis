@@ -1,0 +1,28 @@
+th, td {
+    padding: 10px;
+}
+table {
+    border: 2px solid black;
+}
+
+.container {
+    padding: 10px;
+    margin: 50px;
+}
+
+.header_row {
+    border-bottom: 2px solid black;
+}
+
+.content_row {
+    border: none;
+}
+
+.title_col {
+    font-size: 18px;
+    font-weight: bold;
+    transform: font-size, 2s;
+}
+.title_col:hover {
+    font-size: 20px;
+}
