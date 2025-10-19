@@ -1,28 +1,14 @@
-th, td {
-    padding: 10px;
-}
-table {
-    border: 2px solid black;
-}
-
-.container {
-    padding: 10px;
-    margin: 50px;
+p {
+    font: 12pt sans-serif;
+    margin: 3px;
+    color: black;
 }
 
-.header_row {
-    border-bottom: 2px solid black;
+label {
+    font: 10pt sans-serif;
+    padding: 3px;
 }
 
-.content_row {
-    border: none;
-}
-
-.title_col {
-    font-size: 18px;
-    font-weight: bold;
-    transform: font-size, 2s;
-}
-.title_col:hover {
-    font-size: 20px;
+.chart {
+    background-color: #c7d9d9;
 }
