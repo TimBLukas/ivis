@@ -1,0 +1,2 @@
+\contentsline {section}{\numberline {1}Visualisierung 1}{2}{section.1}%
+\contentsline {section}{\numberline {2}Visualisierung 2}{3}{section.2}%

@@ -1,15 +1,417 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-</head>
-<body>
-    <h1 class="title"></h1>
-    <div class="container">
-        <svg></svg>
-    </div> 
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cars — Bubble Scatter (D3.js)</title>
+    <style>
+      body {
+        font-family: Inter, Arial, sans-serif;
+        margin: 12px;
+        color: #222;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0 0 8px 0;
+      }
+      .controls {
+        margin: 8px 0 16px 0;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      #chart {
+        border: 1px solid #e6e6e6;
+        background: linear-gradient(180deg, #fff, #fafafa);
+      }
+      .tooltip {
+        position: absolute;
+        pointer-events: none;
+        background: rgba(0, 0, 0, 0.78);
+        color: #fff;
+        padding: 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        line-height: 1.3;
+        max-width: 320px;
+      }
+      .legend {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .legend-item {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        font-size: 12px;
+      }
+      .legend-swatch {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+      }
+      .small {
+        font-size: 12px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Interaktiver Bubble-Scatter (D3.js)</h1>
+    <div class="small">
+      X = Fahrzeugvolumen (m³), Y = Horsepower, Größe = Preis, Farbe = Fueltype
+    </div>
 
-</body>
+    <div class="controls">
+      <label
+        >CSV-Datei (optional):
+        <input id="file" type="file" accept=".csv,text/csv"
+      /></label>
+      <label
+        >Fueltype:
+        <select id="fuel-filter">
+          <option value="all">Alle</option>
+        </select></label
+      >
+      <button id="reset">Reset Zoom/Filter</button>
+    </div>
+
+    <svg id="chart" width="1000" height="640"></svg>
+    <div class="legend" id="legend" style="margin-top: 10px"></div>
+
+    <div id="tooltip" class="tooltip" style="display: none"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script>
+      /* D3 v7 — Force-based bubble scatter with zoom, drag, tooltip, filter.
+   Assumptions: CSV uses semicolon separator; numeric fields may be strings -> converted.
+   Required CSV columns (from user): carlength;carwidth;carheight;horsepower;price;fueltype;CarName
+*/
+
+      const svg = d3.select("#chart");
+      const width = +svg.attr("width");
+      const height = +svg.attr("height");
+      const margin = { top: 20, right: 20, bottom: 50, left: 70 };
+      const innerW = width - margin.left - margin.right;
+      const innerH = height - margin.top - margin.bottom;
+
+      const g = svg
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // Scales (initial domain will be set after parsing)
+      const x = d3.scaleLinear().range([0, innerW]).nice();
+      const y = d3.scaleLinear().range([innerH, 0]).nice();
+      const r = d3.scaleSqrt().range([4, 36]); // point radius from price
+      const color = d3.scaleOrdinal(d3.schemeTableau10);
+
+      const xAxisG = g.append("g").attr("transform", `translate(0, ${innerH})`);
+      const yAxisG = g.append("g");
+
+      g.append("text")
+        .attr("class", "axis-label")
+        .attr("transform", `translate(${innerW / 2}, ${innerH + 40})`)
+        .attr("text-anchor", "middle")
+        .text("Fahrzeugvolumen (m³)");
+
+      g.append("text")
+        .attr("class", "axis-label")
+        .attr("transform", `translate(-48, ${innerH / 2}) rotate(-90)`)
+        .attr("text-anchor", "middle")
+        .text("Horsepower");
+
+      const tooltip = d3.select("#tooltip");
+
+      let simulation, nodesG, nodes;
+
+      // CSV loader supporting semicolon. Try to fetch local file first, fallback to file input.
+      function parseAndDraw(rawText) {
+        // semicolon-separated CSV
+        const dsv = d3.dsvFormat(";");
+        const data = dsv.parse(rawText);
+
+        // Convert and compute derived fields
+        const cleaned = data
+          .map((d) => {
+            const carlength = parseFloat(d.carlength);
+            const carwidth = parseFloat(d.carwidth);
+            const carheight = parseFloat(d.carheight);
+            const horsepower = +d.horsepower || NaN;
+            const price = +d.price || NaN;
+            const volume_m3 =
+              isNaN(carlength) || isNaN(carwidth) || isNaN(carheight)
+                ? NaN
+                : (carlength * carwidth * carheight) / 1000 ** 3; // assume mm -> m^3
+            return {
+              CarName: d.CarName || d.carname || "",
+              fueltype: d.fueltype || "unknown",
+              carlength,
+              carwidth,
+              carheight,
+              horsepower,
+              price,
+              volume_m3,
+            };
+          })
+          .filter(
+            (d) =>
+              !isNaN(d.horsepower) && !isNaN(d.price) && !isNaN(d.volume_m3),
+          );
+
+        if (cleaned.length === 0) {
+          alert(
+            "Keine verwertbaren Reihen gefunden (numerische Felder fehlen oder falsch formatiert).",
+          );
+          return;
+        }
+
+        draw(cleaned);
+      }
+
+      function draw(data) {
+        // domains
+        x.domain(d3.extent(data, (d) => d.volume_m3)).nice();
+        y.domain(d3.extent(data, (d) => d.horsepower)).nice();
+        r.domain(d3.extent(data, (d) => d.price)).nice();
+
+        // color domain -> unique fuel types
+        const fuels = Array.from(new Set(data.map((d) => d.fueltype)));
+        color.domain(fuels);
+
+        // axes
+        const xAxis = d3.axisBottom(x).ticks(6);
+        const yAxis = d3.axisLeft(y).ticks(6);
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+
+        // legend
+        const legend = d3.select("#legend");
+        legend.selectAll("*").remove();
+        fuels.forEach((f) => {
+          const item = legend.append("div").attr("class", "legend-item");
+          item
+            .append("div")
+            .attr("class", "legend-swatch")
+            .style("background", color(f));
+          item.append("div").text(f);
+        });
+
+        // nodes group
+        if (nodesG) nodesG.remove();
+        nodesG = g.append("g").attr("class", "nodes");
+
+        nodes = data.map((d) => Object.assign({}, d));
+
+        // create circles
+        const circle = nodesG
+          .selectAll("circle")
+          .data(nodes, (d) => d.CarName + "|" + d.price)
+          .enter()
+          .append("circle")
+          .attr("r", (d) => r(d.price))
+          .attr("fill", (d) => color(d.fueltype))
+          .attr("fill-opacity", 0.85)
+          .attr("stroke", "#222")
+          .attr("stroke-opacity", 0.15)
+          .call(drag(simulation));
+
+        // position nodes initially on x/y scales
+        nodes.forEach((d) => {
+          d.x = x(d.volume_m3);
+          d.y = y(d.horsepower);
+        });
+
+        // force simulation to avoid overlaps but keep them near their x/y targets
+        simulation = d3
+          .forceSimulation(nodes)
+          .force("x", d3.forceX((d) => x(d.volume_m3)).strength(0.9))
+          .force("y", d3.forceY((d) => y(d.horsepower)).strength(0.9))
+          .force(
+            "collide",
+            d3.forceCollide((d) => r(d.price) + 2),
+          )
+          .alphaDecay(0.02)
+          .on("tick", () => {
+            circle
+              .attr("cx", (d) => (d.x = Math.max(0, Math.min(innerW, d.x))))
+              .attr("cy", (d) => (d.y = Math.max(0, Math.min(innerH, d.y))));
+          });
+
+        // interactions: tooltip, drag
+        circle
+          .on("mouseover", (event, d) => {
+            tooltip.style("display", "block")
+              .html(`<strong>${escapeHtml(d.CarName)}</strong><br/>
+               Fuel: ${escapeHtml(d.fueltype)}<br/>
+               Volume: ${d.volume_m3.toFixed(3)} m³<br/>
+               Horsepower: ${d.horsepower}<br/>
+               Price: ${d.price}`);
+            d3.select(event.currentTarget)
+              .attr("stroke-opacity", 0.9)
+              .attr("stroke-width", 1.6);
+          })
+          .on("mousemove", (event) => {
+            tooltip
+              .style("left", event.pageX + 12 + "px")
+              .style("top", event.pageY + 12 + "px");
+          })
+          .on("mouseout", (event) => {
+            tooltip.style("display", "none");
+            d3.select(event.currentTarget)
+              .attr("stroke-opacity", 0.15)
+              .attr("stroke-width", 1);
+          })
+          .on("dblclick", (event, d) => {
+            // zoom to point
+            zoomTo(d);
+          });
+
+        // filtering UI
+        const select = d3.select("#fuel-filter");
+        select.selectAll("option").remove();
+        select.append("option").attr("value", "all").text("Alle");
+        fuels.forEach((f) => select.append("option").attr("value", f).text(f));
+        select.on("change", () => {
+          const val = select.node().value;
+          filterFuel(val);
+        });
+
+        // Zoom / pan
+        svg.call(
+          d3
+            .zoom()
+            .scaleExtent([0.5, 8])
+            .on("zoom", (event) => {
+              g.attr(
+                "transform",
+                `translate(${margin.left + event.transform.x},${margin.top + event.transform.y}) scale(${event.transform.k})`,
+              );
+            }),
+        );
+
+        // helper functions
+        function filterFuel(fuel) {
+          circle
+            .transition()
+            .duration(300)
+            .attr("opacity", (d) =>
+              fuel === "all" || d.fueltype === fuel ? 1 : 0.08,
+            );
+        }
+
+        d3.select("#reset").on("click", () => {
+          // reset zoom
+          svg
+            .transition()
+            .duration(400)
+            .call((t) => {
+              svg.on(".zoom", null); // temporarily disable
+              svg.call(d3.zoom().transform, d3.zoomIdentity);
+              setTimeout(
+                () =>
+                  svg.call(
+                    d3.zoom().on("zoom", (event) => {
+                      g.attr(
+                        "transform",
+                        `translate(${margin.left + event.transform.x},${margin.top + event.transform.y}) scale(${event.transform.k})`,
+                      );
+                    }),
+                  ),
+                100,
+              );
+            });
+          // reset filter
+          select.property("value", "all");
+          filterFuel("all");
+        });
+
+        // zoom to single point (center it, enlarge)
+        function zoomTo(datum) {
+          const tx = innerW / 2 - datum.x;
+          const ty = innerH / 2 - datum.y;
+          const k = 2.4;
+          svg
+            .transition()
+            .duration(700)
+            .call(
+              d3.zoom().transform,
+              d3.zoomIdentity
+                .translate(tx + margin.left, ty + margin.top)
+                .scale(k),
+            );
+        }
+
+        // allow drag to fix position
+        function drag(sim) {
+          function started(event, d) {
+            if (!event.active) sim.alphaTarget(0.2).restart();
+            d.fx = event.x;
+            d.fy = event.y;
+          }
+          function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+          }
+          function ended(event, d) {
+            if (!event.active) sim.alphaTarget(0);
+            // release fixed position on SHIFT+drop, otherwise keep fixed
+            if (!event.sourceEvent.shiftKey) {
+              d.fx = null;
+              d.fy = null;
+            }
+          }
+          return d3
+            .drag()
+            .on("start", started)
+            .on("drag", dragged)
+            .on("end", ended);
+        }
+      }
+
+      // utility: escape html
+      function escapeHtml(str) {
+        return String(str).replace(
+          /[&<>"'`=\/]/g,
+          (s) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+              "/": "&#x2F;",
+              "`": "&#x60;",
+              "=": "&#x3D;",
+            })[s],
+        );
+      }
+
+      // attempt to fetch local CSV (same folder). If fails, user can upload via file input.
+      (function tryLoad() {
+        fetch("CarPrice_CSV_english.csv")
+          .then((res) => {
+            if (!res.ok) throw new Error("Nicht gefunden");
+            return res.text();
+          })
+          .then((txt) => parseAndDraw(txt))
+          .catch(() => {
+            console.warn(
+              "Lokale Datei nicht automatisch geladen — bitte CSV-Datei hochladen oder lege die Datei im gleichen Ordner ab.",
+            );
+          });
+      })();
+
+      document.getElementById("file").addEventListener("change", function (e) {
+        const f = e.target.files[0];
+        if (!f) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => parseAndDraw(ev.target.result);
+        reader.readAsText(f);
+      });
+    </script>
+  </body>
 </html>
+
