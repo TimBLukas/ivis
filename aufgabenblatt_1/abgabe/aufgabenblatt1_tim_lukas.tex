@@ -1,7 +1,6 @@
-
 \documentclass[a4paper,12pt]{article}
 
-% Pakete
+% Pakete ===========================================================
 \usepackage[utf8]{inputenc}     % UTF-8 Kodierung
 \usepackage[T1]{fontenc}        % Font Encoding
 \usepackage{graphicx}           % Bilder einfügen
@@ -10,7 +9,7 @@
 \usepackage{hyperref}           % Hyperlinks
 \usepackage{float}              % [H] Position für Bilder
 
-% Seitenlayout
+% Seitenlayout =====================================================
 \geometry{
     top=20mm,
     bottom=20mm,
@@ -18,69 +17,128 @@
     right=20mm
 }
 
-% Titel
+% Titel ============================================================
 \title{Aufgabenblatt 1: Visualisierung des Auto Datensatzes}
 \author{Tim Lukas}
-\date{\today}
 
 \begin{document}
 
 \maketitle
 
-% ===========================
-\section{Visualisierung 1}
+% ===================================================================
+\section{Visualisierung: Preisverteilung nach Karosserieform}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../images/preisverteilung_nach_karrosserie.png} % Pfad zur Datei anpassen
-    \caption{Preisverteilung nach Karosserieform}
+    \caption{Boxplot der Preisverteilung nach Karosserieform}
     \label{fig:vis1}
 \end{figure}
 
-\subsection*{Beschreibung Visualisierung 1}
-Diese Visualisierung zeigt das Verhältnis zwischen Preis und Karosserieform.
+\paragraph{Beschreibung der Visualisierung} \break
+Die Abbildung zeigt die Preisverteilung der verschiedenen Karosserieformen als Boxplot.
+Aus der Visualisierung lassen sich der Durchschnitsspreis jeder Karosserieform, die Minimal- und Maxiamlwerte, das
+obere und untere Quartil sowie gegebenenfalls einzelne Ausreißer ablesen.
+
+\paragraph{Begründung der Wahl}
+Für die Darstellung als Boxplot habe ich mich entschieden, da sowohl zentrale Tendenzen (Median), als auch die Streuung der
+Preise einschließlich Extrema und Außreiser abgebildet werden. So lassen sich Unterschiede in der Preisverteilung klar erkennen.
+
+\paragraph{Verwendete Datenattribute}
+\begin{itemize}
+  \item \textbf{price} - Fahrzeugpreis in US-Dollar
+  \item \textbf{Car Body Type} - Karosserieform 
+\end{itemize}
+
+\hfill \break
+
+\paragraph{Beantwortbare Fragen}
+\begin{itemize}
+  \item Welche Karosserieform weist den höchsten (\textbf{hardtop}) bzw. den geringsten Durchschnitsspreis auf(\textbf{hatchback})?
+  \item Welche Karosserieform hat eine eher geringe Preisspanne (\textbf{hatchback, wagon}), bzw. welche eine sehr große (\textbf{hardtop})?
+  \item Welche Karosserieformen zeigen eine große Preisstreuung oder Ausreißer
+\end{itemize}
 
 % ===========================
-\section{Visualisierung 2}
+\section{Visualisierung: Beziehung zwischen Leistung und Kraftstoffeffizienz}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../images/preis_nach_fahrzeugvolumen.png} % Pfad zur Datei anpassen
-    \caption{Preis nach Fahrzeugvolumen}
+    \includegraphics[width=0.8\textwidth]{../images/leistung_vs_kraftstoffeffizienz.png} % Pfad zur Datei anpassen
+    \caption{Scatterplot: Leistung vs. Kraftstoffeffizienz (City MPG)}
     \label{fig:vis2}
 \end{figure}
 
-\subsection*{Beschreibung Visualisierung 2}
-Die zweite Visualisierung bildet den Preis in Abhängigkeit vom Fahrzeugvolumen ab, dafür wurde das
-Fahrzeugvolumen mit folgender Formel berechnet: 
+\paragraph{Beschreibung der Visualisierung} \break
+Die Abbildung zeigt die Beziehung zwischen der Motorleistung (PS) und der Kraftstoffeffizienz (City MPG) als Scatterplot.
+Jeder Punkt der Abbildung repräsentiert ein Fahrzeug (Datensatz).
+
+\hfill \break
+
+\paragraph{Begründung der Wahl}
+Ein Scatterplot stellt die Korrelation zwischen zwei numerischen Variablen dar.
+Durch die farbliche Unterscheidung nach Kraftstofftyp wird zudem sichtbar, ob sich Benzin- und Dieselfahrzeuge hinsichtlich ihres Verbrauchsverhaltens unterscheiden.
+
+\paragraph{Verwendete Datenattribute}
+\begin{itemize}
+  \item \textbf{horsepower} - Motorleistung (PS)
+  \item \textbf{citympg} - Kraftstoffeffizienz (Miles per Gallon im Stadtverkehr)
+  \item \textbf{fueltype} - Kraftstoffart (Benzin oder Diesel)
+\end{itemize}
+
+
+\paragraph{Beantwortbare Fragen}
+\begin{itemize}
+  \item Gibt es einen Zusammenhang zwischen den PS eines Autos und dem Benzinverbrauch? - 
+    \textbf{Ja, es lässt sich ein klarer Zusammenhang zwischen den Werten erkennen}.
+  \item Existiert ein Unterschied zwischen dem leistungsabhängigen Verbrauch von Fahrzeugen, die mit Diesel betrieben werden, gegenüber
+    Fahrzeugen, die mit Benzin betrieben werden? - \textbf{Nein, es ist kein Unterschied zwischen Diesel- und Benzinfahrzeugen erkennbar}.
+\end{itemize}
 
 
 % ===========================
-\section{Visualisierung 3}
+\section{Visualisierung: Preisstruktur nach Marke und Karosserieform}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../images/preisstruktur_nach_marke_karosserie.png} % Pfad zur Datei anpassen
-    \caption{Preisstruktur nach Marke und Karosserie}
+    \caption{Sunburst-Diagramm: Preisstruktur nach Marke und Karosserieform}
     \label{fig:vis3}
 \end{figure}
 
-\subsection*{Beschreibung Visualisierung 3}
-Die dritte Viusalisierung zeigt die Preisstruktur der Fahrzeuge nach Marke und Karosserie an.
+
+\paragraph{Beschreibung}
+Das Sunburst-Diagramm zeigt die hierarchische Preisstruktur der Fahrzeuge nach Marke und Karosserieform.
+Jeder Sektion im äußeren Ring repräsentiert eine Karosserieform innerhalb einer Marke, während die Sektionen des inneren Rings die unterschiedlichen Marken repräsentieren.
+Durch Interaktivität (in der erstellten Version) kann eine Marke ausgewählt werden, um eine Detailansicht zu erhalten.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/preisstruktur_nach_marke_karosserie_clicked.png} % Pfad zur Datei anpassen
+    \caption{Detailansicht: Preisstruktur der Karosserieformen einer Marke}
+    \label{fig:vis4}
+  \end{figure}
+
+
+
+\hfill \break
+
+\paragraph{Beantwortbare Fragen}
+\begin{itemize}
+  \item Welche Marken haben einen besonders hohen durchschnittlichen Fahrzeugpreis? - \textbf{buick, jaguar}
+  \item Welche Marken haben einen besonders niedrigen durchschnittlichen Fahrzeugpreis? - \textbf{honda, subaru}
+  \item Wie unterscheiden sich die Fahrzeugpreise einer Marke abhängig von der Karosserieform?
+  \item Welche Karosserieformen haben markenübergreifend durchschnittlich höhere bzw. geringere Durchschnittspreise?
+\end{itemize}
 
 
 % ===========================
 \section{Verwendete Tools}
-Für die Erstellung der Visualisierungen wurden folgende Python-Tools verwendet:
+Für die Erstellung der Visualisierungen wurde Python mit folgenden Libraries verwendet:
 
 \begin{itemize}
-    \item \textbf{pandas}: Datenmanipulation und Einlesen von CSV-Dateien.
-      Mit \texttt{pandas} konnten die Spalten ausgewählt, in numerische Werte konvertiert
-      und neue Features wie das Fahrzeugvolumen berechnet werden.
-    \item \textbf{matplotlib}: Grundlegende Visualisierung.
-      Dient zum Erstellen von Scatterplots, Boxplots, 3D-Plots und zur Anpassung von Achsen, Titeln und Layouts.
-    \item \textbf{seaborn}: Aufbauend auf \texttt{matplotlib} für statistische Visualisierungen.
-      Genutzt für Scatterplots, Boxplots, Pairplots, Bubble-Charts, Heatmaps und die Anpassung von Farben, Transparenz und Layouts.
-    \item \textbf{mpl\_toolkits.mplot3d}: Erweiterung von \textbf{matplotlib} für 3D-Darstellungen (z.B. 3D-Scatterplots).
-    \item \textbf{plotly.express}: Erstellung interaktiver Visualisierungen (z.B. Sunburst-Diagramme).
-      Unterstützt Zoom, Tooltipps und Farbkodierungen.
+  \item \textbf{pandas} - Einlesen und Verarbeitung der CSV-Daten
+  \item \textbf{matplotlib} - Erstellen statischer Diagramme (Grundlage für Scatterplots und Boxplots) 
+  \item \textbf{seaborn} - Erweiterte grafische Darstellung und Stiloptimierung.
+    Genutzt für Scatterplots und Boxplots und die Anpassung von Farben und Transparenz.
+  \item \textbf{plotly.express} - Erstellung interaktiver Diagramme (Sunburst)
 \end{itemize}
 
 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  19 OCT 2025 18:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  19 OCT 2025 18:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**aufgabenblatt1_tim_lukas.tex
-(./aufgabenblatt1_tim_lukas.tex
+**abgabe/aufgabenblatt1_tim_lukas.tex
+(./abgabe/aufgabenblatt1_tim_lukas.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (/opt/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -232,7 +232,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count301
 )
-(./aufgabenblatt1_tim_lukas.aux)
+No file aufgabenblatt1_tim_lukas.aux.
 \openout1 = `aufgabenblatt1_tim_lukas.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -253,7 +253,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
-
 (/opt/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count302
@@ -316,7 +315,6 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 24.
-(./aufgabenblatt1_tim_lukas.out) (./aufgabenblatt1_tim_lukas.out)
 \@outlinefile=\write3
 \openout3 = `aufgabenblatt1_tim_lukas.out'.
 
@@ -324,112 +322,34 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 27.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 27.
-<../images/preisverteilung_nach_karrosserie.png, id=20, 679.338pt x 719.0865pt>
 
-File: ../images/preisverteilung_nach_karrosserie.png Graphic file (type png)
-<use ../images/preisverteilung_nach_karrosserie.png>
-Package pdftex.def Info: ../images/preisverteilung_nach_karrosserie.png  used o
-n input line 32.
-(pdftex.def)             Requested size: 386.95897pt x 409.60925pt.
+LaTeX Warning: File `../images/preisverteilung_nach_karrosserie.png' not found 
+on input line 32.
 
 
-[1
+! Package pdftex.def Error: File `../images/preisverteilung_nach_karrosserie.pn
+g' not found: using draft setting.
 
-{/opt/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texlive/2
-025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <../images/preisvertei
-lung_nach_karrosserie.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
-
- []
-
-
-Overfull \hbox (18.70758pt too wide) in paragraph at lines 56--57
-[]\T1/cmr/m/n/12 Welche Karosserieform weist den höch-sten (\T1/cmr/bx/n/12 har
-dtop\T1/cmr/m/n/12 ) bzw. den ger-ing-sten Durch-schnitsspreis
- []
-
-<../images/leistung_vs_kraftstoffeffizienz.png, id=33, 679.338pt x 719.0865pt>
-File: ../images/leistung_vs_kraftstoffeffizienz.png Graphic file (type png)
-<use ../images/leistung_vs_kraftstoffeffizienz.png>
-Package pdftex.def Info: ../images/leistung_vs_kraftstoffeffizienz.png  used on
- input line 65.
-(pdftex.def)             Requested size: 386.95897pt x 409.60925pt.
-
-
-[2{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-[3 <../images/leistung_vs_kraftstoffeffizienz.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
-
- []
-
-
-Overfull \hbox (41.4828pt too wide) in paragraph at lines 98--98
-[]\T1/cmr/bx/n/17.28 Visualisierung: Preis-struk-tur nach Marke und Karosserief
-orm 
- []
-
-<../images/preisstruktur_nach_marke_karosserie.png, id=50, 893.3375pt x 838.131
-26pt>
-File: ../images/preisstruktur_nach_marke_karosserie.png Graphic file (type png)
-
-<use ../images/preisstruktur_nach_marke_karosserie.png>
-Package pdftex.def Info: ../images/preisstruktur_nach_marke_karosserie.png  use
-d on input line 101.
-(pdftex.def)             Requested size: 386.95897pt x 363.0495pt.
-
-
-[4]
-Overfull \hbox (7.92575pt too wide) in paragraph at lines 108--111
-\T1/cmr/m/n/12 nach Marke und Karosserieform. Jeder Sek-tion im äuÿeren Ring re
-präsen-tiert eine Karosserieform
- []
-
-<../images/preisstruktur_nach_marke_karosserie_clicked.png, id=59, 896.34875pt 
-x 840.13875pt>
-File: ../images/preisstruktur_nach_marke_karosserie_clicked.png Graphic file (t
-ype png)
-<use ../images/preisstruktur_nach_marke_karosserie_clicked.png>
-Package pdftex.def Info: ../images/preisstruktur_nach_marke_karosserie_clicked.
-png  used on input line 114.
-(pdftex.def)             Requested size: 386.95897pt x 362.6884pt.
-
-
-[5 <../images/preisstruktur_nach_marke_karosserie.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-
-
-[6 <../images/preisstruktur_nach_marke_karosserie_clicked.png>]
-
-[7] (./aufgabenblatt1_tim_lukas.aux)
- ***********
-LaTeX2e <2025-06-01> patch level 1
-L3 programming layer <2025-09-02>
- ***********
-Package rerunfilecheck Info: File `aufgabenblatt1_tim_lukas.out' has not change
-d.
-(rerunfilecheck)             Checksum: 71B33980272E9984A989420EE468684F;1179.
- ) 
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 ...ages/preisverteilung_nach_karrosserie.png}
+                                                   % Pfad zur Datei anpassen
+? x
+ 
 Here is how much of TeX's memory you used:
- 10539 strings out of 467748
- 167770 string characters out of 5404041
- 575934 words of memory out of 5000000
- 39123 multiletter control sequences out of 15000+600000
- 633894 words of font info for 51 fonts, out of 8000000 for 9000
+ 10479 strings out of 467748
+ 167092 string characters out of 5404041
+ 570595 words of memory out of 5000000
+ 39100 multiletter control sequences out of 15000+600000
+ 632781 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,452b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></opt/
-texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></opt/texlive/
-2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></opt/texlive/2025/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></opt/texlive/2025/texmf-dist/
-fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on aufgabenblatt1_tim_lukas.pdf (7 pages, 406835 bytes).
+ 75i,6n,79p,315b,398s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
- 26 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3 PDF objects out of 1000 (max. 8388607)
+ 1 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
