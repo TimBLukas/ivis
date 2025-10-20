@@ -33,15 +33,21 @@ def boxplot_price_carbody(csv_content: pd.DataFrame) -> None:
     plt.show()
 
 
-# 3. Scatterplot: Leistung vs. Verbrauch
 def scatter_hp_mpg(csv_content: pd.DataFrame) -> None:
+    df = csv_content.copy()
     plt.figure(figsize=(7, 5))
+
+    # Verbrauch in Liter pro 100 km berechnen
+    # Formel: L/100km = 235.215 / mpg
+    df["city_l_per_100km"] = 235.215 / df["citympg"]
+
     sns.scatterplot(
-        data=csv_content, x="horsepower", y="citympg", hue="fueltype", alpha=0.7
+        data=df, x="horsepower", y="city_l_per_100km", hue="fueltype", alpha=0.7
     )
-    plt.title("Leistung vs. Kraftstoffeffizienz (City MPG)")
-    plt.xlabel("Horsepower")
-    plt.ylabel("City MPG")
+
+    plt.title("Leistung (PS) vs. Kraftstoffverbrauch (City, L/100 km)")
+    plt.xlabel("Leistung (PS)")
+    plt.ylabel("Verbrauch (L/100 km) im Stadtverkehr")
     plt.tight_layout()
     plt.show()
 

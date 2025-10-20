@@ -8,6 +8,7 @@
 \usepackage{geometry}           % Seitenränder
 \usepackage{hyperref}           % Hyperlinks
 \usepackage{float}              % [H] Position für Bilder
+\usepackage{amsmath}            % Für Mathematische Formeln
 
 % Seitenlayout =====================================================
 \geometry{
@@ -62,20 +63,21 @@ Preise einschließlich Extrema und Außreiser abgebildet werden. So lassen sich 
 \section{Visualisierung: Beziehung zwischen Leistung und Kraftstoffeffizienz}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../images/leistung_vs_kraftstoffeffizienz.png} % Pfad zur Datei anpassen
+    \includegraphics[width=0.8\textwidth]{../images/leistung_vs_kraftstoffeffizienz_lp100.png} % Pfad zur Datei anpassen
     \caption{Scatterplot: Leistung vs. Kraftstoffeffizienz (City MPG)}
     \label{fig:vis2}
 \end{figure}
 
 \paragraph{Beschreibung der Visualisierung} \break
-Die Abbildung zeigt die Beziehung zwischen der Motorleistung (PS) und der Kraftstoffeffizienz (City MPG) als Scatterplot.
-Jeder Punkt der Abbildung repräsentiert ein Fahrzeug (Datensatz).
+Die Abbildung zeigt die Beziehung zwischen der Motorleistung (PS) und der Kraftstoffeffizienz (\textit{Liter pro 100 Kilometer}) als Scatterplot.
+Jeder Punkt der Abbildung repräsentiert ein Fahrzeug, die Farbe des jeweiligen Punktes gibt an, ob das Fahrzeug mit Benzin oder Diesel betrieben wird.
 
-\hfill \break
 
 \paragraph{Begründung der Wahl}
-Ein Scatterplot stellt die Korrelation zwischen zwei numerischen Variablen dar.
-Durch die farbliche Unterscheidung nach Kraftstofftyp wird zudem sichtbar, ob sich Benzin- und Dieselfahrzeuge hinsichtlich ihres Verbrauchsverhaltens unterscheiden.
+Mithilfe eines Scatterplots kann die Korrelation zwischen zwei numerischen Variablen, in diesem Fall Motorleistung und Kraftstoffeffizienz,
+gut dargestellt werden, da sich Trends, Zusammenhänge und Außreiser unmittelbar visuell erkennen lassen.
+Durch die farbliche Unterscheidung der Punkte nach Kraftstofftyp wird zudem sichtbar, ob sich Benzin- und Dieselfahrzeuge hinsichtlich ihres Verbrauchsverhaltens unterscheiden.
+
 
 \paragraph{Verwendete Datenattribute}
 \begin{itemize}
@@ -83,6 +85,49 @@ Durch die farbliche Unterscheidung nach Kraftstofftyp wird zudem sichtbar, ob si
   \item \textbf{citympg} - Kraftstoffeffizienz (Miles per Gallon im Stadtverkehr)
   \item \textbf{fueltype} - Kraftstoffart (Benzin oder Diesel)
 \end{itemize}
+
+
+\paragraph{Zusätzliche Berechnung} \break
+Da in Deutschland der Verbrauch typischerweise \textit{L/100k} angegeben wird, habe ich die Miles Per Gallon im Stadtverkehr in die entsprechenden \textit{L/100k} umgerechnet.
+Dafür habe ich folgende Formel verwendet: \break
+
+Grundlage für die Umrechnung sind folgende Werte: \break
+
+\[
+1\,\text{mile} = 1.609344\,\text{km}, 
+\qquad 
+1\,\text{gallon} = 3.785411784\,\text{L}.
+\]
+Basierend auf diesen Werten ergibt sich:
+\[
+\begin{aligned}
+1\,\text{mpg} 
+&= \frac{1\,\text{mile}}{1\,\text{gallon}} \\[6pt]
+&= \frac{1.609344\,\text{km}}{3.785411784\,\text{L}} \\[6pt]
+&= 0.4251437\,\frac{\text{km}}{\text{L}} \\[10pt]
+\Rightarrow \quad
+1\,\frac{\text{km}}{\text{L}} 
+&= \frac{1}{0.4251437}\,\text{mpg} 
+= 2.35215\,\text{mpg} \\[10pt]
+\Rightarrow \quad
+1\,\text{mpg} 
+&= 0.425144\,\frac{\text{km}}{\text{L}} \\[10pt]
+\text{Da} \quad
+1\,\text{L}/100\,\text{km} 
+&= \frac{100}{\text{km}/\text{L}}, \\[6pt]
+\text{folgt:} \quad
+\text{L/100\,km} 
+&= \frac{100}{0.425144 \times \text{mpg}} \\[6pt]
+&= \frac{235.215}{\text{mpg}}
+\end{aligned}
+\]
+
+Die Umrechnung konnte im Python-Skript also mit folgender Formel umsetzen:
+\[
+\boxed{\text{L/100\,km} = \frac{235.215}{\text{mpg}}}.
+\]
+
+\hfill \break
 
 
 \paragraph{Beantwortbare Fragen}
