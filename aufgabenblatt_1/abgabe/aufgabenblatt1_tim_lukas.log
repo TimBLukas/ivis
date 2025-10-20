@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  20 OCT 2025 09:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  20 OCT 2025 09:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -441,18 +441,8 @@ n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
-\T1/cmr/m/n/12 Dafür habe ich fol-gende Formel ver-wen-det: 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
-[]\T1/cmr/m/n/12 Grundlage für die Um-rech-nung sind fol-gende Werte: 
+[][] 
  []
 
 
@@ -532,7 +522,7 @@ type1/public/cm-super/sfrm1200.pfb></opt/texlive/2025/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1440.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/cm-
 super/sfrm2074.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sf
 ti1200.pfb>
-Output written on aufgabenblatt1_tim_lukas.pdf (7 pages, 457123 bytes).
+Output written on aufgabenblatt1_tim_lukas.pdf (7 pages, 457098 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream
