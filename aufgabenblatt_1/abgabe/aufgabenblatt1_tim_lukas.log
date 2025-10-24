@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  20 OCT 2025 09:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  20 OCT 2025 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -396,120 +396,99 @@ Package hyperref Info: Link coloring OFF on input line 25.
 \@outlinefile=\write3
 \openout3 = `aufgabenblatt1_tim_lukas.out'.
 
-<../images/preisverteilung_nach_karrosserie.png, id=20, 679.338pt x 719.0865pt>
-
-File: ../images/preisverteilung_nach_karrosserie.png Graphic file (type png)
-<use ../images/preisverteilung_nach_karrosserie.png>
-Package pdftex.def Info: ../images/preisverteilung_nach_karrosserie.png  used o
-n input line 33.
-(pdftex.def)             Requested size: 386.95897pt x 409.60925pt.
+<../images/leistung_vs_kraftstoffeffizienz_lp100.png, id=16, 1140.26pt x 574.14
+5pt>
+File: ../images/leistung_vs_kraftstoffeffizienz_lp100.png Graphic file (type pn
+g)
+<use ../images/leistung_vs_kraftstoffeffizienz_lp100.png>
+Package pdftex.def Info: ../images/leistung_vs_kraftstoffeffizienz_lp100.png  u
+sed on input line 65.
+(pdftex.def)             Requested size: 386.95897pt x 194.83876pt.
 
 
 [1
 
 {/opt/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texlive/2
-025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <../images/preisvertei
-lung_nach_karrosserie.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
+025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <../images/leistung_vs
+_kraftstoffeffizienz_lp100.png>]
 
- []
-
-
-Overfull \hbox (18.70758pt too wide) in paragraph at lines 57--58
-[]\T1/cmr/m/n/12 Welche Karosserieform weist den höch-sten (\T1/cmr/bx/n/12 har
-dtop\T1/cmr/m/n/12 ) bzw. den ger-ing-sten Durch-schnitsspreis
- []
-
-<../images/leistung_vs_kraftstoffeffizienz_lp100.png, id=33, 680.0607pt x 342.5
-598pt>
-File: ../images/leistung_vs_kraftstoffeffizienz_lp100.png Graphic file (type pn
-g)
-<use ../images/leistung_vs_kraftstoffeffizienz_lp100.png>
-Package pdftex.def Info: ../images/leistung_vs_kraftstoffeffizienz_lp100.png  u
-sed on input line 66.
-(pdftex.def)             Requested size: 386.95897pt x 194.92657pt.
-
-
-[2{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <../
-images/leistung_vs_kraftstoffeffizienz_lp100.png>]
-
-[3]
-Overfull \hbox (5.20734pt too wide) in paragraph at lines 91--93
+[2{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Overfull \hbox (10.05058pt too wide) in paragraph at lines 90--92
  []\T1/cmr/bx/n/12 Zusätzliche Berech-nung[] \T1/cmr/m/n/12 Da in Deutsch-land 
-der Ver-brauch typ-is-cher-weise \T1/cmr/m/it/12 L/100k \T1/cmr/m/n/12 angegebe
-n
+der Ver-brauch typ-is-cher-weise \T1/cmr/m/it/12 l/100km \T1/cmr/m/n/12 angegeb
+en
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--131
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
-Overfull \hbox (41.4828pt too wide) in paragraph at lines 143--143
+Overfull \hbox (41.4828pt too wide) in paragraph at lines 142--142
 []\T1/cmr/bx/n/17.28 Visualisierung: Preis-struk-tur nach Marke und Karosserief
 orm 
  []
 
-<../images/preisstruktur_nach_marke_karosserie.png, id=54, 893.3375pt x 838.131
+<../images/preisstruktur_nach_marke_karosserie.png, id=39, 893.3375pt x 838.131
 26pt>
 File: ../images/preisstruktur_nach_marke_karosserie.png Graphic file (type png)
 
 <use ../images/preisstruktur_nach_marke_karosserie.png>
 Package pdftex.def Info: ../images/preisstruktur_nach_marke_karosserie.png  use
-d on input line 146.
+d on input line 145.
 (pdftex.def)             Requested size: 386.95897pt x 363.0495pt.
 
 
-[4]
-Overfull \hbox (7.92575pt too wide) in paragraph at lines 153--156
+[3]
+Overfull \hbox (7.92575pt too wide) in paragraph at lines 152--155
 \T1/cmr/m/n/12 nach Marke und Karosserieform. Jeder Sek-tion im äuÿeren Ring re
 präsen-tiert eine Karosserieform
  []
 
-<../images/preisstruktur_nach_marke_karosserie_clicked.png, id=64, 896.34875pt 
+<../images/preisstruktur_nach_marke_karosserie_clicked.png, id=49, 896.34875pt 
 x 840.13875pt>
 File: ../images/preisstruktur_nach_marke_karosserie_clicked.png Graphic file (t
 ype png)
 <use ../images/preisstruktur_nach_marke_karosserie_clicked.png>
 Package pdftex.def Info: ../images/preisstruktur_nach_marke_karosserie_clicked.
-png  used on input line 159.
+png  used on input line 158.
 (pdftex.def)             Requested size: 386.95897pt x 362.6884pt.
 
 
-[5 <../images/preisstruktur_nach_marke_karosserie.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
+[4 <../images/preisstruktur_nach_marke_karosserie.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
 
-[6 <../images/preisstruktur_nach_marke_karosserie_clicked.png>]
+[5 <../images/preisstruktur_nach_marke_karosserie_clicked.png>]
 
-[7] (./aufgabenblatt1_tim_lukas.aux)
+[6] (./aufgabenblatt1_tim_lukas.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `aufgabenblatt1_tim_lukas.out' has not change
 d.
-(rerunfilecheck)             Checksum: 71B33980272E9984A989420EE468684F;1179.
+(rerunfilecheck)             Checksum: D13B882CA7E5CCD75A637DAFF7FD9C24;872.
  ) 
 Here is how much of TeX's memory you used:
- 11298 strings out of 467748
- 178043 string characters out of 5404041
- 592923 words of memory out of 5000000
- 39850 multiletter control sequences out of 15000+600000
+ 11282 strings out of 467748
+ 177576 string characters out of 5404041
+ 592844 words of memory out of 5000000
+ 39841 multiletter control sequences out of 15000+600000
  639671 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,452b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -522,10 +501,10 @@ type1/public/cm-super/sfrm1200.pfb></opt/texlive/2025/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1440.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/cm-
 super/sfrm2074.pfb></opt/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sf
 ti1200.pfb>
-Output written on aufgabenblatt1_tim_lukas.pdf (7 pages, 457098 bytes).
+Output written on aufgabenblatt1_tim_lukas.pdf (6 pages, 472064 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
- 27 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 117 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
+ 20 named destinations out of 1000 (max. 500000)
+ 40 words of extra memory for PDF output out of 10000 (max. 10000000)
 

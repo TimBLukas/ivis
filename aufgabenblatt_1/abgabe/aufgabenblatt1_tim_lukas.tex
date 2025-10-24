@@ -27,37 +27,36 @@
 \maketitle
 
 % ===================================================================
-\section{Visualisierung: Preisverteilung nach Karosserieform}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/preisverteilung_nach_karrosserie.png} % Pfad zur Datei anpassen
-    \caption{Boxplot der Preisverteilung nach Karosserieform}
-    \label{fig:vis1}
-\end{figure}
-
-\paragraph{Beschreibung der Visualisierung} \break
-Die Abbildung zeigt die Preisverteilung der verschiedenen Karosserieformen als Boxplot.
-Aus der Visualisierung lassen sich der Durchschnitsspreis jeder Karosserieform, die Minimal- und Maxiamlwerte, das
-obere und untere Quartil sowie gegebenenfalls einzelne Ausreißer ablesen.
-
-\paragraph{Begründung der Wahl}
-Für die Darstellung als Boxplot habe ich mich entschieden, da sowohl zentrale Tendenzen (Median), als auch die Streuung der
-Preise einschließlich Extrema und Außreiser abgebildet werden. So lassen sich Unterschiede in der Preisverteilung klar erkennen.
-
-\paragraph{Verwendete Datenattribute}
-\begin{itemize}
-  \item \textbf{price} - Fahrzeugpreis in US-Dollar
-  \item \textbf{Car Body Type} - Karosserieform 
-\end{itemize}
-
-\hfill \break
-
-\paragraph{Beantwortbare Fragen}
-\begin{itemize}
-  \item Welche Karosserieform weist den höchsten (\textbf{hardtop}) bzw. den geringsten Durchschnitsspreis auf(\textbf{hatchback})?
-  \item Welche Karosserieform hat eine eher geringe Preisspanne (\textbf{hatchback, wagon}), bzw. welche eine sehr große (\textbf{hardtop})?
-  \item Welche Karosserieformen zeigen eine große Preisstreuung oder Ausreißer
-\end{itemize}
+% \section{Visualisierung: Preisverteilung nach Karosserieform}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{../images/preisverteilung_nach_karrosserie.png} % Pfad zur Datei anpassen
+%     \caption{Boxplot der Preisverteilung nach Karosserieform}
+%     \label{fig:vis1}
+% \end{figure}
+% 
+% \paragraph{Beschreibung der Visualisierung} \break
+% Die Abbildung zeigt die Preisverteilung der verschiedenen Karosserieformen als Boxplot.
+% Aus der Visualisierung lassen sich der Durchschnitsspreis jeder Karosserieform, die Minimal- und Maxiamlwerte, das
+% obere und untere Quartil sowie gegebenenfalls einzelne Ausreißer ablesen.
+% 
+% \paragraph{Begründung der Wahl}
+% Für die Darstellung als Boxplot habe ich mich entschieden, da sowohl zentrale Tendenzen (Median), als auch die Streuung der
+% Preise einschließlich Extrema und Außreiser abgebildet werden. So lassen sich Unterschiede in der Preisverteilung klar erkennen.
+% 
+% \paragraph{Verwendete Datenattribute}
+% \begin{itemize}
+%   \item \textbf{price} - Fahrzeugpreis in US-Dollar
+%   \item \textbf{Car Body Type} - Karosserieform 
+% \end{itemize}
+% 
+% 
+% \paragraph{Beantwortbare Fragen}
+% \begin{itemize}
+%   \item Welche Karosserieform weist den höchsten (\textbf{hardtop}) bzw. den geringsten Durchschnitsspreis auf(\textbf{hatchback})?
+%   \item Welche Karosserieform hat eine eher geringe Preisspanne (\textbf{hatchback, wagon}), bzw. welche eine sehr große (\textbf{hardtop})?
+%   \item Welche Karosserieformen zeigen eine große Preisstreuung oder Ausreißer
+% \end{itemize}
 
 % ===========================
 \section{Visualisierung: Beziehung zwischen Leistung und Kraftstoffeffizienz}
@@ -65,7 +64,7 @@ Preise einschließlich Extrema und Außreiser abgebildet werden. So lassen sich 
     \centering
     \includegraphics[width=0.8\textwidth]{../images/leistung_vs_kraftstoffeffizienz_lp100.png} % Pfad zur Datei anpassen
     \caption{Scatterplot: Leistung vs. Kraftstoffeffizienz (City MPG)}
-    \label{fig:vis2}
+    \label{fig:vis1}
 \end{figure}
 
 \paragraph{Beschreibung der Visualisierung} \break
@@ -88,7 +87,7 @@ Durch die farbliche Unterscheidung der Punkte nach Kraftstofftyp wird zudem sich
 
 
 \paragraph{Zusätzliche Berechnung} \break
-Da in Deutschland der Verbrauch typischerweise \textit{L/100k} angegeben wird, habe ich die Miles Per Gallon im Stadtverkehr in die entsprechenden \textit{L/100k} umgerechnet.
+Da in Deutschland der Verbrauch typischerweise \textit{l/100km} angegeben wird, habe ich die Miles per Gallon im Stadtverkehr in die entsprechenden \textit{l/100km} umgerechnet.
 \text{Dafür habe ich folgende Formel verwendet:}
 
 \text{Grundlage für die Umrechnung sind folgende Werte:} \break
@@ -96,27 +95,27 @@ Da in Deutschland der Verbrauch typischerweise \textit{L/100k} angegeben wird, h
 \[
 1\,\text{mile} = 1.609344\,\text{km}, 
 \qquad 
-1\,\text{gallon} = 3.785411784\,\text{L}.
+1\,\text{gallon} = 3.785411784\,\text{l}.
 \]
 Basierend auf diesen Werten ergibt sich:
 \[
 \begin{aligned}
 1\,\text{mpg} 
 &= \frac{1\,\text{mile}}{1\,\text{gallon}} \\[6pt]
-&= \frac{1.609344\,\text{km}}{3.785411784\,\text{L}} \\[6pt]
+&= \frac{1.609344\,\text{km}}{3.785411784\,\text{l}} \\[6pt]
 &= 0.4251437\,\frac{\text{km}}{\text{L}} \\[10pt]
 \Rightarrow \quad
-1\,\frac{\text{km}}{\text{L}} 
+1\,\frac{\text{km}}{\text{l}}
 &= \frac{1}{0.4251437}\,\text{mpg} 
 = 2.35215\,\text{mpg} \\[10pt]
 \Rightarrow \quad
 1\,\text{mpg} 
-&= 0.425144\,\frac{\text{km}}{\text{L}} \\[10pt]
+&= 0.425144\,\frac{\text{km}}{\text{l}} \\[10pt]
 \text{Da} \quad
 1\,\text{L}/100\,\text{km} 
-&= \frac{100}{\text{km}/\text{L}}, \\[6pt]
+&= \frac{100}{\text{km}/\text{l}}, \\[6pt]
 \text{folgt:} \quad
-\text{L/100\,km} 
+\text{l/100\,km} 
 &= \frac{100}{0.425144 \times \text{mpg}} \\[6pt]
 &= \frac{235.215}{\text{mpg}}
 \end{aligned}
@@ -124,7 +123,7 @@ Basierend auf diesen Werten ergibt sich:
 
 Die Umrechnung konnte im Python-Skript also mit folgender Formel umsetzen:
 \[
-\boxed{\text{L/100\,km} = \frac{235.215}{\text{mpg}}}.
+\boxed{\text{l/100\,km} = \frac{235.215}{\text{mpg}}}.
 \]
 
 \hfill \break
@@ -133,7 +132,7 @@ Die Umrechnung konnte im Python-Skript also mit folgender Formel umsetzen:
 \paragraph{Beantwortbare Fragen}
 \begin{itemize}
   \item Gibt es einen Zusammenhang zwischen den PS eines Autos und dem Benzinverbrauch? - 
-    \textbf{Ja, es lässt sich ein klarer Zusammenhang zwischen den Werten erkennen}.
+    \textbf{Ja, es lässt sich ein klarer Zusammenhang zwischen den Werten erkennen: Es lässt sich ein linearer Zusammenhang zwischen steigender Motorleistung und steigendem durchschnittlichem Verbrauch erkennen}.
   \item Existiert ein Unterschied zwischen dem leistungsabhängigen Verbrauch von Fahrzeugen, die mit Diesel betrieben werden, gegenüber
     Fahrzeugen, die mit Benzin betrieben werden? - \textbf{Nein, es ist kein Unterschied zwischen Diesel- und Benzinfahrzeugen erkennbar}.
 \end{itemize}

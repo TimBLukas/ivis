@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Remote JS Scripts --> 
+    <!-- D3 Integration --> 
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
-    <!-- Add Stylesheet-->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="index.css" />
     <title>Aufgabenblatt 2</title>
 </head>
 <body>
-    <!-- Formular für Nutzereingabe -->
-    <form id="valueSelection"></form>
-
     <div class="title-container">
         <h1>Aufgabenblatt 2 - Visualisierung</h1>
     </div>
     <div class="visualisation-container">
         <!-- Visualisierung (wird mit d3 befüllt) -->
-        <svg></svg>
+        <svg id="data_visualisation"></svg>
     </div>
     <div class="legend-container">
         <div class="color-legend">
@@ -30,7 +27,7 @@
     </div>
 
 
-    <!-- Script mit d3 für die Visualisierung -->
+    <!-- Script für die Visualisierung -->
     <script src="main.js"></script>
 </body>
 </html>

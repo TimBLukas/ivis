@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#data_visualisation {
+    position: relative; 
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 11px;
+}
+
+.x-axis .tick text {
+    transform: rotate(-25deg); 
+    text-anchor: end;
+}
+
+.bubble {
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: left;
+    max-width: 250px;
+    font-size: 13px;
+    pointer-events: none; 
+    z-index: 1000; 
+}
+
+.legend-item text {
+    font-size: 12px;
+    fill: #333;
+}
