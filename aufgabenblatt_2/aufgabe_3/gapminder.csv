@@ -1,0 +1,196 @@
+country,Average Daily Income,Population,Babies per Woman,world_4region,world_6region,income_3groups,landlocked,main_religion_2008
+Afghanistan,3.17,40.6M,4.93,asia,south_asia,low_income,landlocked,muslim
+Albania,16.3,2.83M,1.36,europe,europe_central_asia,middle_income,coastline,muslim
+Algeria,9.29,45.5M,2.82,africa,middle_east_north_africa,middle_income,coastline,muslim
+Andorra,61.6,79.7k,1.07,europe,europe_central_asia,high_income,landlocked,christian
+Angola,4.71,35.6M,5.21,africa,sub_saharan_africa,middle_income,coastline,christian
+Antigua and Barbuda,21.1,92.8k,1.58,americas,america,high_income,coastline,christian
+Argentina,22.1,45.4M,1.48,americas,america,middle_income,coastline,christian
+Armenia,8.79,2.88M,1.72,europe,europe_central_asia,middle_income,landlocked,christian
+Australia,67.2,26.2M,1.64,asia,east_asia_pacific,high_income,coastline,christian
+Austria,71.8,9.06M,1.41,europe,europe_central_asia,high_income,landlocked,christian
+Azerbaijan,20,10.3M,1.69,europe,europe_central_asia,middle_income,landlocked,muslim
+Bahamas,33.8,398k,1.38,americas,america,high_income,coastline,christian
+Bahrain,53.2,1.53M,1.84,asia,middle_east_north_africa,high_income,coastline,muslim
+Bangladesh,4.94,169M,2.18,asia,south_asia,middle_income,coastline,muslim
+Barbados,15.2,282k,1.71,americas,america,high_income,coastline,christian
+Belarus,19.2,9.17M,1.33,europe,europe_central_asia,middle_income,landlocked,christian
+Belgium,63.7,11.6M,1.55,europe,europe_central_asia,high_income,coastline,christian
+Belize,9.27,403k,1.95,americas,america,middle_income,coastline,christian
+Benin,5.26,13.8M,4.63,africa,sub_saharan_africa,low_income,coastline,
+Bhutan,15.8,781k,1.48,asia,south_asia,middle_income,landlocked,eastern_religions
+Bolivia,19.9,12.1M,2.58,americas,america,middle_income,landlocked,christian
+Bosnia and Herzegovina,32.4,3.2M,1.48,europe,europe_central_asia,middle_income,coastline,
+Botswana,10,2.44M,2.79,africa,sub_saharan_africa,middle_income,landlocked,christian
+Brazil,19.6,210M,1.63,americas,america,middle_income,coastline,christian
+Brunei,61.2,455k,1.76,asia,east_asia_pacific,high_income,coastline,muslim
+Bulgaria,36.8,6.83M,1.77,europe,europe_central_asia,middle_income,coastline,christian
+Burkina Faso,4.5,22.5M,4.28,africa,sub_saharan_africa,low_income,landlocked,muslim
+Burundi,1.97,13.3M,4.98,africa,sub_saharan_africa,low_income,landlocked,christian
+Cambodia,5.92,17.2M,2.62,asia,east_asia_pacific,middle_income,coastline,eastern_religions
+Cameroon,6.08,27.6M,4.4,africa,sub_saharan_africa,middle_income,coastline,christian
+Canada,65.4,38.8M,1.37,americas,america,high_income,coastline,christian
+Cape Verde,10.9,520k,1.53,africa,sub_saharan_africa,middle_income,coastline,christian
+Central African Republic,2.19,5.1M,6.02,africa,sub_saharan_africa,low_income,landlocked,
+Chad,3.45,18.5M,6.22,africa,sub_saharan_africa,low_income,landlocked,muslim
+Chile,28.7,19.6M,1.26,americas,america,high_income,coastline,christian
+China,15.2,1.43B,1.03,asia,east_asia_pacific,middle_income,coastline,eastern_religions
+Colombia,15.1,51.7M,1.66,americas,america,middle_income,coastline,christian
+Comoros,6.55,834k,3.94,africa,sub_saharan_africa,middle_income,coastline,muslim
+Congo. Dem. Rep.,2.55,102M,6.11,africa,sub_saharan_africa,low_income,landlocked,christian
+Congo. Rep.,2.99,6.04M,4.22,africa,sub_saharan_africa,middle_income,coastline,christian
+Costa Rica,24.5,5.08M,1.34,americas,america,middle_income,coastline,christian
+Cote d'Ivoire,6.34,30.4M,4.35,africa,sub_saharan_africa,middle_income,coastline,
+Croatia,38.3,3.91M,1.53,europe,europe_central_asia,high_income,coastline,christian
+Cuba,11.1,11.1M,1.41,americas,america,middle_income,coastline,christian
+Cyprus,58.5,1.33M,1.39,europe,europe_central_asia,high_income,coastline,christian
+Czech Republic,43.2,10.7M,1.62,europe,europe_central_asia,high_income,landlocked,christian
+Denmark,69.4,5.9M,1.56,europe,europe_central_asia,high_income,coastline,christian
+Djibouti,6.1,1.14M,2.65,africa,middle_east_north_africa,middle_income,coastline,muslim
+Dominica,12,66.8k,1.48,americas,america,middle_income,coastline,christian
+Dominican Republic,14.6,11.2M,2.27,americas,america,middle_income,coastline,christian
+Ecuador,15.2,17.8M,1.86,americas,america,middle_income,coastline,christian
+Egypt,7.33,113M,2.75,africa,middle_east_north_africa,middle_income,coastline,muslim
+El Salvador,13.1,6.28M,1.79,americas,america,middle_income,coastline,christian
+Equatorial Guinea,14.9,1.8M,4.17,africa,sub_saharan_africa,middle_income,coastline,christian
+Eritrea,3.28,3.41M,3.79,africa,sub_saharan_africa,low_income,coastline,muslim
+Estonia,45.2,1.35M,1.41,europe,europe_central_asia,high_income,coastline,christian
+Eswatini,6.34,1.22M,2.8,africa,sub_saharan_africa,middle_income,landlocked,christian
+Ethiopia,5.09,125M,4.08,africa,sub_saharan_africa,low_income,coastline,christian
+Fiji,7.14,919k,2.31,asia,east_asia_pacific,middle_income,coastline,christian
+Finland,61.6,5.57M,1.32,europe,europe_central_asia,high_income,coastline,christian
+France,62.5,66.3M,1.76,europe,europe_central_asia,high_income,coastline,christian
+Gabon,11.9,2.43M,3.71,africa,sub_saharan_africa,middle_income,coastline,christian
+Gambia,5.29,2.64M,4.08,africa,sub_saharan_africa,low_income,coastline,muslim
+Georgia,8.3,3.79M,1.82,europe,europe_central_asia,middle_income,coastline,christian
+Germany,65.5,84.1M,1.46,europe,europe_central_asia,high_income,coastline,christian
+Ghana,6.01,33.1M,3.43,africa,sub_saharan_africa,middle_income,coastline,christian
+Greece,33.5,10.4M,1.31,europe,europe_central_asia,high_income,coastline,christian
+Grenada,14.6,117k,1.5,americas,america,middle_income,coastline,christian
+Guatemala,10.8,17.8M,2.34,americas,america,middle_income,coastline,christian
+Guinea,4.8,14.1M,4.3,africa,sub_saharan_africa,low_income,coastline,muslim
+Guinea-Bissau,4.21,2.11M,3.91,africa,sub_saharan_africa,low_income,coastline,
+Guyana,39.2,822k,2.44,americas,america,middle_income,coastline,christian
+Haiti,3.57,11.5M,2.7,americas,america,low_income,coastline,christian
+Honduras,10.3,10.5M,2.52,europe,europe_central_asia,,landlocked,christian
+Hong Kong. China,60.9,7.47M,0.71,americas,america,middle_income,coastline,christian
+Hungary,33.8,9.68M,1.55,europe,europe_central_asia,high_income,landlocked,christian
+Iceland,62.3,380k,1.59,europe,europe_central_asia,high_income,coastline,christian
+India,5.21,1.43B,1.99,asia,south_asia,middle_income,coastline,eastern_religions
+Indonesia,7.81,279M,2.15,asia,east_asia_pacific,middle_income,coastline,muslim
+Iran,15.7,89.5M,1.7,asia,middle_east_north_africa,middle_income,coastline,muslim
+Iraq,11.2,44.1M,3.29,asia,middle_east_north_africa,middle_income,coastline,muslim
+Ireland,72.3,5.11M,1.59,europe,europe_central_asia,high_income,coastline,christian
+Israel,45,9.1M,2.94,asia,middle_east_north_africa,high_income,coastline,
+Italy,55.7,59.6M,1.24,europe,europe_central_asia,high_income,coastline,christian
+Jamaica,15.1,2.84M,1.37,americas,america,middle_income,coastline,christian
+Japan,52.4,125M,1.26,asia,east_asia_pacific,high_income,coastline,eastern_religions
+Jordan,13.3,11.3M,2.68,asia,middle_east_north_africa,middle_income,coastline,muslim
+Kazakhstan,12.7,20M,3.05,asia,europe_central_asia,middle_income,landlocked,muslim
+Kenya,3.69,54.3M,3.26,africa,sub_saharan_africa,middle_income,coastline,christian
+Kiribati,6.37,130k,3.18,asia,east_asia_pacific,middle_income,coastline,christian
+Kuwait,50.1,4.59M,1.55,asia,middle_east_north_africa,high_income,coastline,muslim
+Kyrgyz Republic,7.09,6.96M,2.81,asia,europe_central_asia,middle_income,landlocked,muslim
+Lao,6.87,7.56M,2.46,asia,east_asia_pacific,middle_income,landlocked,eastern_religions
+Latvia,38,1.88M,1.47,europe,europe_central_asia,high_income,coastline,christian
+Lebanon,21.1,5.74M,2.26,asia,middle_east_north_africa,middle_income,coastline,
+Lesotho,4.12,2.29M,2.72,africa,sub_saharan_africa,middle_income,landlocked,christian
+Liberia,3.72,5.37M,4.02,africa,sub_saharan_africa,low_income,coastline,
+Libya,19.6,7.22M,2.4,africa,middle_east_north_africa,middle_income,coastline,muslim
+Lithuania,46.5,2.82M,1.27,europe,europe_central_asia,high_income,landlocked,christian
+Luxembourg,96.5,653k,1.39,europe,europe_central_asia,high_income,coastline,christian
+Madagascar,1.6,30.4M,4.04,europe,europe_central_asia,high_income,landlocked,christian
+Malawi,2,20.6M,3.72,africa,sub_saharan_africa,low_income,coastline,
+Malaysia,34.6,34.7M,1.55,africa,sub_saharan_africa,low_income,landlocked,christian
+Maldives,19.1,524k,1.58,asia,east_asia_pacific,middle_income,coastline,muslim
+Mali,4.81,23.1M,5.69,asia,south_asia,middle_income,coastline,muslim
+Malta,67,528k,1.1,africa,sub_saharan_africa,low_income,landlocked,muslim
+Marshall Islands,12.5,40.1k,2.94,europe,europe_central_asia,high_income,coastline,christian
+Mauritania,6.83,4.88M,4.77,asia,east_asia_pacific,middle_income,coastline,christian
+Mauritius,17,1.28M,1.27,africa,sub_saharan_africa,middle_income,coastline,muslim
+Mexico,14.9,129M,1.94,africa,sub_saharan_africa,middle_income,coastline,
+Micronesia. Fed. Sts.,5.36,112k,2.79,americas,america,middle_income,coastline,christian
+Moldova,11.5,3.04M,1.69,asia,east_asia_pacific,middle_income,coastline,christian
+Monaco,74.4,38.9k,2.11,europe,europe_central_asia,middle_income,landlocked,christian
+Mongolia,9.86,3.39M,2.75,europe,europe_central_asia,high_income,coastline,christian
+Montenegro,18.1,615k,1.88,asia,east_asia_pacific,middle_income,landlocked,
+Morocco,11.6,37.3M,2.26,europe,europe_central_asia,middle_income,coastline,christian
+Mozambique,2.03,32.7M,4.84,africa,middle_east_north_africa,middle_income,coastline,muslim
+Myanmar,6.29,53.8M,2.13,africa,sub_saharan_africa,low_income,coastline,christian
+Namibia,10.2,2.89M,3.25,asia,east_asia_pacific,middle_income,coastline,eastern_religions
+Nauru,8.49,11.8k,3.38,africa,sub_saharan_africa,middle_income,coastline,christian
+Nepal,7.75,29.7M,2,asia,east_asia_pacific,middle_income,coastline,christian
+Netherlands,69.3,17.9M,1.51,asia,south_asia,low_income,landlocked,eastern_religions
+New Zealand,45.3,5.13M,1.67,europe,europe_central_asia,high_income,coastline,christian
+Nicaragua,12.7,6.73M,2.24,asia,east_asia_pacific,high_income,coastline,christian
+Niger,3.05,25.3M,6.14,americas,america,middle_income,coastline,christian
+Nigeria,3.56,223M,4.55,africa,sub_saharan_africa,low_income,landlocked,muslim
+North Korea,3.27,26.3M,1.8,africa,sub_saharan_africa,middle_income,coastline,
+North Macedonia,15.3,1.84M,1.59,asia,east_asia_pacific,low_income,coastline,
+Norway,76.9,5.46M,1.42,europe,europe_central_asia,middle_income,landlocked,christian
+Oman,35,4.73M,2.45,europe,europe_central_asia,high_income,coastline,christian
+Pakistan,5.3,244M,3.66,asia,middle_east_north_africa,high_income,coastline,muslim
+Palau,14.1,17.8k,1.93,asia,south_asia,middle_income,coastline,muslim
+Palestine,12.3,5.31M,3.38,asia,east_asia_pacific,high_income,coastline,christian
+Panama,33.8,4.4M,2.14,asia,middle_east_north_africa,middle_income,coastline,muslim
+Papua New Guinea,4.24,10.2M,3.17,americas,america,high_income,coastline,christian
+Paraguay,18.5,6.76M,2.44,asia,east_asia_pacific,middle_income,coastline,christian
+Peru,12.3,33.5M,2,americas,america,middle_income,landlocked,christian
+Philippines,8.15,114M,1.93,americas,america,middle_income,coastline,christian
+Poland,31,38.4M,1.26,asia,east_asia_pacific,middle_income,coastline,christian
+Portugal,40.9,10.4M,1.45,europe,europe_central_asia,high_income,coastline,christian
+Qatar,112,2.89M,1.74,europe,europe_central_asia,high_income,coastline,christian
+Romania,27.1,19.2M,1.72,asia,middle_east_north_africa,high_income,coastline,muslim
+Russia,23.4,146M,1.45,europe,europe_central_asia,middle_income,coastline,christian
+Rwanda,3.83,13.7M,3.78,europe,europe_central_asia,middle_income,coastline,christian
+Samoa,9.22,215k,3.88,africa,sub_saharan_africa,low_income,landlocked,christian
+San Marino,64.7,34.1k,1.14,asia,east_asia_pacific,middle_income,coastline,christian
+Sao Tome and Principe,5.57,226k,3.7,europe,europe_central_asia,high_income,landlocked,christian
+Saudi Arabia,51,32.2M,2.14,africa,sub_saharan_africa,middle_income,coastline,christian
+Senegal,6.33,17.7M,3.86,asia,middle_east_north_africa,high_income,coastline,muslim
+Serbia,21.6,6.79M,1.52,africa,sub_saharan_africa,middle_income,coastline,muslim
+Seychelles,23.6,126k,2.17,europe,europe_central_asia,middle_income,landlocked,christian
+Sierra Leone,3.95,8.28M,3.88,africa,sub_saharan_africa,high_income,coastline,christian
+Singapore,128,5.65M,0.94,africa,sub_saharan_africa,low_income,coastline,
+Slovak Republic,27,5.47M,1.56,asia,east_asia_pacific,high_income,coastline,eastern_religions
+Slovenia,51.8,2.12M,1.57,europe,europe_central_asia,high_income,landlocked,christian
+Solomon Islands,3.58,781k,3.62,europe,europe_central_asia,high_income,coastline,christian
+Somalia,2.81,17.8M,6.26,asia,east_asia_pacific,middle_income,coastline,christian
+South Africa,11.5,62.4M,2.23,africa,sub_saharan_africa,low_income,coastline,muslim
+South Korea,49.3,51.8M,0.78,africa,sub_saharan_africa,middle_income,coastline,christian
+South Sudan,1.66,11M,3.96,asia,east_asia_pacific,high_income,coastline,
+Spain,52,47.8M,1.21,africa,sub_saharan_africa,low_income,landlocked,
+Sri Lanka,8.27,22.8M,1.98,europe,europe_central_asia,high_income,coastline,christian
+St. Kitts and Nevis,28.3,46.7k,1.51,asia,south_asia,middle_income,coastline,eastern_religions
+St. Lucia,20.4,179k,1.39,americas,america,high_income,coastline,christian
+St. Vincent and the Grenadines,14.8,102k,1.79,americas,america,middle_income,coastline,christian
+Sudan,3.41,49.4M,4.38,americas,america,middle_income,coastline,christian
+Suriname,15.1,623k,2.27,africa,sub_saharan_africa,middle_income,coastline,muslim
+Sweden,62.8,10.5M,1.54,americas,america,middle_income,coastline,christian
+Switzerland,78.6,8.79M,1.4,europe,europe_central_asia,high_income,coastline,christian
+Syria,2.98,22.5M,2.75,europe,europe_central_asia,high_income,landlocked,christian
+Taiwan,57.2,23.4M,0.87,asia,middle_east_north_africa,low_income,coastline,muslim
+Tajikistan,9.11,10.2M,3.13,asia,europe_central_asia,low_income,landlocked,muslim
+Tanzania,3.44,64.7M,4.67,africa,sub_saharan_africa,low_income,coastline,christian
+Thailand,17,71.7M,1.22,asia,east_asia_pacific,middle_income,coastline,eastern_religions
+Timor-Leste,4.38,1.37M,2.8,asia,east_asia_pacific,middle_income,coastline,christian
+Togo,4.96,9.09M,4.25,africa,sub_saharan_africa,low_income,coastline,
+Tonga,9.04,105k,3.17,asia,east_asia_pacific,middle_income,coastline,christian
+Trinidad and Tobago,24.2,1.5M,1.54,americas,america,high_income,coastline,christian
+Tunisia,13.6,12.1M,1.85,africa,middle_east_north_africa,middle_income,coastline,muslim
+Turkey,26,87.1M,1.63,europe,europe_central_asia,middle_income,coastline,muslim
+Turkmenistan,12.6,7.23M,2.73,asia,europe_central_asia,middle_income,landlocked,muslim
+Tuvalu,11.5,9990,3.24,asia,east_asia_pacific,middle_income,coastline,christian
+UAE,81.8,10.2M,1.15,asia,middle_east_north_africa,high_income,coastline,muslim
+Uganda,3.56,47.3M,4.39,africa,sub_saharan_africa,low_income,landlocked,christian
+UK,61.6,68.2M,1.56,europe,europe_central_asia,high_income,coastline,christian
+Ukraine,12.4,41M,0.9,europe,europe_central_asia,middle_income,coastline,christian
+Uruguay,28.4,3.39M,1.43,americas,america,high_income,coastline,christian
+USA,89.1,342M,1.67,americas,america,high_income,coastline,christian
+Uzbekistan,3.71,34.9M,3.4,asia,europe_central_asia,middle_income,landlocked,muslim
+Vanuatu,4.93,313k,3.65,asia,east_asia_pacific,middle_income,coastline,christian
+Venezuela,3.95,28.2M,2.09,americas,america,middle_income,coastline,christian
+Vietnam,16.4,99.7M,1.93,asia,east_asia_pacific,middle_income,coastline,eastern_religions
+Yemen,2.16,38.2M,4.59,asia,middle_east_north_africa,low_income,coastline,muslim
+Zambia,2.92,20.2M,4.18,africa,sub_saharan_africa,middle_income,landlocked,christian
+Zimbabwe,4.38,16.1M,3.77,africa,sub_saharan_africa,middle_income,landlocked,christian
