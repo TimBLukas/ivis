@@ -1,196 +1,196 @@
-const MARGIN = { top: 40, right: 120, bottom: 60, left: 80 }; 
-const SVG_WIDTH = 900;  
-const SVG_HEIGHT = 600; 
-const WIDTH = SVG_WIDTH - MARGIN.left - MARGIN.right;
-const HEIGHT = SVG_HEIGHT - MARGIN.top - MARGIN.bottom;
-const CSV_FILE = "gapminder.csv"; 
-const X_AXIS_LABEL = "Average Daily Income";
-const Y_AXIS_LABEL = "Babies per Woman";
+// Farbgebung für Kontinente als Skala
+const colorScheme = d3
+  .scaleOrdinal()
+  .domain([
+    "Africa",
+    "Americas",
+    "Asia",
+    "Europe",
+    "East Asia & Pacific",
+    "South Asia",
+  ])
+  .range(["#e74c3c", "#3498db", "#f39c12", "#2ecc71", "#9b59b6", "#1abc9c"]);
 
-const REGION_COLORS = d3.scaleOrdinal(d3.schemeSet2); 
+const margin = { top: 20, right: 20, bottom: 50, left: 70 };
 
-const svg = d3.select("#data_visualisation") 
-    .append("svg") 
-    .attr("width", SVG_WIDTH)
-    .attr("height", SVG_HEIGHT);
+// Umrechnung der Bevölkerungszahlen in verwendbare Werte
+const parsePopulation = (str) => {
+  if (!str) return NaN;
+  const val = parseFloat(str);
+  const s = str.toUpperCase();
+  return s.includes("B")
+    ? val * 1e9
+    : s.includes("M")
+      ? val * 1e6
+      : s.includes("K")
+        ? val * 1e3
+        : val;
+};
 
-const g = svg.append("g") 
-    .attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
+// Rekonvertierung für die Ausgabe
+const formatPopulation = (n) =>
+  n >= 1e9
+    ? (n / 1e9).toFixed(2) + "B"
+    : n >= 1e6
+      ? (n / 1e6).toFixed(1) + "M"
+      : n >= 1e3
+        ? (n / 1e3).toFixed(1) + "K"
+        : n.toFixed(0);
 
-const tooltip = d3.select("#data_visualisation") 
-    .append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0); 
+const getColor = (region) => colorScheme(region) || "#95a5a6";
 
-function parsePopulation(populationString) {
-    if (!populationString) return 0; 
-    
-    let cleanedString = populationString.trim().replace(/,/g, '');
-
-    const lastChar = cleanedString[cleanedString.length - 1];
-    let value = parseFloat(cleanedString); 
-
-    if (isNaN(value)) return 0; 
-
-    if (lastChar === 'M') {
-        value *= 1000000;
-    } else if (lastChar === 'k') {
-        value *= 1000;
-    } else if (lastChar === 'B') {
-        value *= 1000000000;
-    }
-
-    return value;
+// Tooltip-Funktionen
+function showTooltip(event, d, tooltip) {
+  tooltip
+    .html(
+      `
+    <div class="tooltip-country">${d.country}</div>
+    <div>Region: ${d.region}</div>
+    <div>Daily Income: $${d.income.toFixed(2)}</div>
+    <div>Population: ${formatPopulation(d.population)}</div>
+    <div>Fertility: ${d.fertility.toFixed(2)}</div>
+  `,
+    )
+    .classed("visible", true);
+  moveTooltip(event, tooltip);
 }
 
+function moveTooltip(event, tooltip) {
+  const { pageX, pageY } = event;
+  tooltip.style("left", `${pageX + 10}px`).style("top", `${pageY}px`);
+}
 
-d3.csv(CSV_FILE)
-    .then(data => {
-        data.forEach(d => {
-            d.avgDailyIncome = +String(d["Average Daily Income"]).replace(',', '.') || 0; 
-            d.babiesPerWoman = +String(d["Babies per Woman"]).replace(',', '.') || 0;
-            
-            d.population = parsePopulation(d["Population"]); 
-            
-            d.country = d.country || d.Country || "Unknown Country";
-            d.region = d["world_4region"] || d.region || d.Region || "Unknown Region";
-            d.mainReligion = d["main_religion_2008"] || "Unknown Religion"; 
-        });
+function hideTooltip(tooltip) {
+  tooltip.classed("visible", false);
+}
 
-        const filteredData = data.filter(d => 
-            d.avgDailyIncome > 0 && d.babiesPerWoman > 0 && d.population > 0
-        );
-        
-        if (filteredData.length === 0) {
-            console.error("Keine gültigen Daten zum Anzeigen des Diagramms gefunden nach Filterung."); 
-            g.append("text")
-                .attr("x", WIDTH / 2)
-                .attr("y", HEIGHT / 2)
-                .attr("text-anchor", "middle")
-                .attr("class", "error-message") 
-                .text("Keine Daten verfügbar oder alle Daten ungültig. Bitte CSV-Header & Datenformat prüfen."); 
-            return; 
-        }
+// Legende
+function createLegend(svg, dataset, width) {
+  const regions = Array.from(new Set(dataset.map((d) => d.region))).sort();
+  const legend = svg
+    .append("g")
+    .attr("class", "legend")
+    .attr("transform", `translate(${width - 120}, 20)`);
 
-        const maxAvgIncome = d3.max(filteredData, d => d.avgDailyIncome);
-        const maxBabiesPerWoman = d3.max(filteredData, d => d.babiesPerWoman);
-        const maxPopulation = d3.max(filteredData, d => d.population);
+  regions.forEach((region, i) => {
+    const g = legend.append("g").attr("transform", `translate(0,${i * 20})`);
+    g.append("rect")
+      .attr("width", 12)
+      .attr("height", 12)
+      .attr("fill", getColor(region));
+    g.append("text").attr("x", 18).attr("y", 10).text(region);
+  });
+}
 
-        const xScale = d3.scaleLinear()
-            .domain([0, maxAvgIncome * 1.05]) 
-            .range([0, WIDTH]);
+// Erstellen der Visualisierung
+d3.csv("gapminder.csv", (d) => ({
+  country: d.country,
+  income: +d["Average Daily Income"],
+  fertility: +d["Babies per Woman"],
+  population: parsePopulation(d.Population),
+  region: d.world_4region || d.world_6region || "Unknown",
+  incomeGroup: d.income_3groups ?? "",
+}))
+  .then((dataset) => {
+    dataset = dataset.filter(
+      (d) => !isNaN(d.income) && !isNaN(d.fertility) && !isNaN(d.population),
+    );
 
-        const yScale = d3.scaleLinear()
-            .domain([0, maxBabiesPerWoman * 1.1])
-            .range([HEIGHT, 0]); 
+    const container = d3.select("#chart");
+    const { width: cw, height: ch } = container.node().getBoundingClientRect();
+    const width = cw - margin.left - margin.right;
+    const height = ch - margin.top - margin.bottom;
 
-        const radiusScale = d3.scaleLinear()
-            .domain([0, maxPopulation])
-            .range([4, 40]); 
+    const svg = container
+      .append("svg")
+      .attr("viewBox", [0, 0, cw, ch])
+      .append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        REGION_COLORS.domain([...new Set(filteredData.map(d => d.region))]);
+    // Skalen
+    const xScale = d3
+      .scaleLog()
+      .domain(d3.extent(dataset, (d) => d.income))
+      .range([0, width])
+      .nice();
 
-        const xAxis = d3.axisBottom(xScale);
-        const yAxis = d3.axisLeft(yScale);
+    const yScale = d3
+      .scaleLinear()
+      .domain([0, d3.max(dataset, (d) => d.fertility) * 1.1])
+      .range([height, 0])
+      .nice();
 
-        g.append("g")
-            .attr("class", "x-axis axis")
-            .attr("transform", `translate(0,${HEIGHT})`)
-            .call(xAxis)
-            .append("text") 
-            .attr("x", WIDTH / 2)
-            .attr("y", MARGIN.bottom - 10) 
-            .attr("fill", "black")
-            .attr("text-anchor", "middle")
-            .attr("class", "axis-label")
-            .text(X_AXIS_LABEL);
+    // Skala für den Durchmesser
+    const rScale = d3
+      .scaleSqrt()
+      .domain([0, d3.max(dataset, (d) => d.population)])
+      .range([3, 50]);
 
-        g.append("g")
-            .attr("class", "y-axis axis")
-            .call(yAxis)
-            .append("text") 
-            .attr("transform", "rotate(-90)")
-            .attr("y", -MARGIN.left + 20) 
-            .attr("x", -HEIGHT / 2)
-            .attr("fill", "black")
-            .attr("text-anchor", "middle")
-            .attr("class", "axis-label")
-            .text(Y_AXIS_LABEL);
+    const xAxis = d3
+      .axisBottom(xScale)
+      .ticks(8, "~s")
+      .tickFormat((d) => `$${d}`);
+    const yAxis = d3.axisLeft(yScale);
 
-        const showTooltip = function(event, d) {
-            tooltip
-                .transition()
-                .duration(200)
-                .style("opacity", 1);
-            updateTooltip(event, d); 
-        };
+    svg
+      .append("g")
+      .attr("transform", `translate(0,${height})`)
+      .call(xAxis)
+      .call((g) => g.select(".domain").remove());
 
-        const updateTooltip = function(event, d) {
-            tooltip
-                .html(
-                    `Country: <b>${d.country}</b><br/>` +
-                    `Daily Income: <b>$${d.avgDailyIncome.toFixed(2)}</b><br/>` + 
-                    `Population: <b>${d.population.toLocaleString()}</b><br/>` + 
-                    `Babies Per Woman: <b>${d.babiesPerWoman.toFixed(2)}</b><br/>` +
-                    `Main Religion: <b>${d.mainReligion}</b>`
-                )
-                .style("left", `${event.pageX + 15}px`) 
-                .style("top", `${event.pageY - 28}px`); 
-        };
+    svg
+      .append("g")
+      .call(yAxis)
+      .call((g) => g.select(".domain").remove());
 
-        const hideTooltip = function() {
-            tooltip
-                .transition()
-                .duration(200)
-                .style("opacity", 0);
-        };
+    svg
+      .append("g")
+      .attr("class", "grid")
+      .call(d3.axisLeft(yScale).tickSize(-width).tickFormat(""));
 
-        g.append('g')
-            .attr("class", "bubble-group")
-            .selectAll(".bubble") 
-            .data(filteredData) 
-            .join("circle") 
-            .attr("class", "bubble")
-            .attr("cx", d => xScale(d.avgDailyIncome))
-            .attr("cy", d => yScale(d.babiesPerWoman))
-            .attr("r", d => radiusScale(d.population))
-            .style("fill", d => REGION_COLORS(d.region))
-            .style("opacity", 0.7)
-            .on("mouseover", showTooltip)
-            .on("mousemove", updateTooltip)
-            .on("mouseleave", hideTooltip);
+    svg
+      .append("g")
+      .attr("class", "grid")
+      .attr("transform", `translate(0,${height})`)
+      .call(d3.axisBottom(xScale).tickSize(-height).tickFormat(""));
 
-        const legend = svg.append("g")
-            .attr("class", "legend")
-            .attr("transform", `translate(${SVG_WIDTH - MARGIN.right + 20}, ${MARGIN.top})`); 
+    // Tooltip
+    const tooltip = d3.select(".tooltip");
 
-        const regions = REGION_COLORS.domain();
+    // Bubbles
+    const bubbles = svg
+      .selectAll(".bubble")
+      .data(dataset, (d) => d.country)
+      .join("circle")
+      .attr("class", "bubble")
+      .attr("cx", (d) => xScale(d.income))
+      .attr("cy", (d) => yScale(d.fertility))
+      .attr("r", (d) => rScale(d.population))
+      .attr("fill", (d) => getColor(d.region))
+      .attr("opacity", 0.8)
+      .on("mouseenter", (event, d) => showTooltip(event, d, tooltip))
+      .on("mousemove", (event) => moveTooltip(event, tooltip))
+      .on("mouseleave", () => hideTooltip(tooltip));
 
-        legend.selectAll(".legend-item")
-            .data(regions)
-            .enter()
-            .append("g")
-            .attr("class", "legend-item")
-            .attr("transform", (d, i) => `translate(0, ${i * 20})`)
-            .each(function(d) {
-                d3.select(this).append("rect")
-                    .attr("x", 0)
-                    .attr("y", 0)
-                    .attr("width", 15)
-                    .attr("height", 15)
-                    .style("fill", REGION_COLORS(d));
-                d3.select(this).append("text")
-                    .attr("x", 20)
-                    .attr("y", 12)
-                    .text(d)
-                    .style("font-size", "12px")
-                    .attr("alignment-baseline", "middle");
-            });
+    // Labels
+    const labels = svg
+      .selectAll(".label")
+      .data(dataset)
+      .join("text")
+      .attr("class", "label")
+      .attr("x", (d) => xScale(d.income))
+      .attr("y", (d) => yScale(d.fertility))
+      .attr("dy", "0.35em")
+      .text((d) => d.country)
+      .style("display", "none");
 
-    })
-    .catch(error => {
-        console.error("Fehler beim Laden oder Parsen der CSV-Datei:", error);
-        d3.select("#data_visualisation").append("p")
-            .attr("class", "error-message")
-            .text("Fehler beim Laden der Daten. Bitte prüfen Sie die Konsolenausgabe.");
-    });
+    // Legende
+    createLegend(svg, dataset, width);
+
+    // Label-Toggle
+    d3.select("#showLabels").on("change", (e) =>
+      labels.style("display", e.target.checked ? "block" : "none"),
+    );
+  })
+  .catch((err) => console.error("Error loading data:", err));
+
