@@ -1,121 +1,161 @@
-// Dimensionen definieren
-var margin = {top: 10, right: 20, bottom: 30, left: 50},
-    width = 500 - margin.left - margin.right,
-    height = 420 - margin.top - margin.bottom;
+function parseNumber(num) {
+  var lastChar = num.slice(-1);
+  if (lastChar == "B") {
+    return parseFloat(num.substring(0, num.length - 1)) * 1_000_000_000;
+  } else if (lastChar == "M") {
+    return parseFloat(num.substring(0, num.length - 1)) * 1_000_000;
+  } else if (lastChar == "k") {
+    return parseFloat(num.substring(0, num.length - 1)) * 1_000;
+  } else {
+    return parseInt(num);
+  }
+}
 
+d3.csv("gapminder.csv").then(
+  function (dataset) {
+    // Konstanten für Größen Angaben definierej
+    const svgWidth = 600;
+    const svgHeight = 400;
+    const margin = {
+      top: 20,
+      right: 30,
+      bottom: 30,
+      left: 100,
+    };
 
-// svg wählen und die Dimensionen festlegen
-var svg = d3.select("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+    let xParam = "Average Daily Income";
+    let yParam = "Babies per Woman";
+    let rParam = "Population";
+    let colorParam = "world_4region";
 
-// CSV-Daten einlesen (Promise-basiert und numerische Felder parsen)
-d3.csv("gapminder.csv").then(function(data) {
-    // parse numeric fields so scales work correctly
-    data.forEach(function(d) {
-        d["Avarage Daily Income"] = +d["Avarage Daily Income"];
-        d["Babies per Woman"] = +d["Babies per Woman"];
-        d["Population"] = +d["Population"];
-        // ensure common keys exist (optional, depends on your CSV)
-        d.country = d.country || d.Country;
-        d["world_4region"] = d["world_4region"] || d.region || d.Region;
-        d["main_religion_2008"] = d["main_religion_2008"] || d.main_religion_2008;
-    });
+    let minX = d3.min(dataset, (d) => parseFloat(d[xParam]));
+    let maxX = d3.max(dataset, (d) => parseFloat(d[xParam]));
 
-    // define constants (now numeric)
-    const minValueAvgIncome = d3.min(data, d => d["Avarage Daily Income"]);
-    const maxValueAvgIncome = d3.max(data, d => d["Avarage Daily Income"]);
+    let minY = d3.min(dataset, (d) => parseFloat(d[yParam]));
+    let maxY = d3.max(dataset, (d) => parseFloat(d[yParam]));
 
-    const minValueBabiesPerWoman = d3.min(data, d => d["Babies per Woman"]);
-    const maxValueBabiesPerWoman = d3.max(data, d => d["Babies per Woman"]);
+    let minR = d3.min(dataset, (d) => parseNumber(d[rParam]));
+    let maxR = d3.max(dataset, (d) => parseNumber(d[rParam]));
 
-    const minValuePopulation = d3.min(data, d => d["Population"]);
-    const maxValuePopulation = d3.max(data, d => d["Population"]);
+    console.log(minX);
+    console.log(maxX);
+    console.log(minY);
+    console.log(maxY);
+    console.log(minR);
+    console.log(maxR);
 
+    // Farbscale für die Bubbles basierend auf den Spalte world_4region
+    let colorInt = d3
+      .scaleOrdinal()
+      .domain(["asia", "europe", "africa", "americas"])
+      .range([
+        "#e74c3c",
+        "#3498db",
+        "#f39c12",
+        "#2ecc71",
+        "#9b59b6",
+        "#1abc9c",
+      ]);
 
-    // Add X axis (0 - maximal Wert der csv)
-    var x = d3.scaleLinear()
-        .domain([minValueAvgIncome, maxValueAvgIncome])
-        .range([ 0, width ]);
-    svg.append("g")
-        .attr("transform", "translate(0," + width + ")")
-        .call(d3.axisBottom(x));
+    let svg = d3
+      .select("svg")
+      .attr("width", svgWidth + margin.left + margin.right)
+      .attr("height", svgHeight + margin.top + margin.bottom + 20)
+      .attr("class", "chart");
 
-    // Add Y axis
-    var y = d3.scaleLinear()
-        .domain([minValueBabiesPerWoman, maxValueBabiesPerWoman])
-        .range([ height, 0]);
-    svg.append("g")
-        .attr("transform", "translate(" + height + ", 0)")
-        .call(d3.axisLeft(y));
+    // X-Skala basierend auf dem ermittelten minX und maxX Wert
+    let scaleX = d3
+      .scaleLinear()
+      .domain([minX, maxX])
+      .range([margin.left, svgWidth]);
 
-    // Add a scale for bubble size
-    var z = d3.scaleLinear()
-        .domain([minValuePopulation, maxValuePopulation])
-        .range([ 4, 40]);
+    // Y-Skala basierend auf dem ermittelten minY und maxY Wert
+    let scaleY = d3
+      .scaleLinear()
+      .domain([minY, maxY])
+      .range([svgHeight, margin.top]);
 
-    // Add a scale for bubble color
-    var myColor = d3.scaleOrdinal()
-        .domain(["asia", "europe", "americas", "africa", "oceania"])
-        .range(d3.schemeSet2);
+    let scaleR = d3.scaleSqrt().domain([minR, maxR]).range([0, 50]);
 
-    // -1- Create a tooltip div that is hidden by default:
-    var tooltip = d3.select("#data_visualisation")
-        .append("div")
-            .style("opacity", 0)
-        .attr("class", "tooltip")
-            .style("background-color", "black")
-            .style("border-radius", "5px")
-            .style("padding", "10px")
-            .style("color", "white")
+    // Skalen zur SVG hinzufügen
+    svg
+      .append("g")
+      .attr("transform", "translate(0," + (svgHeight + margin.top) + ")")
+      .call(d3.axisBottom(scaleX));
 
-    // -2- Create 3 functions to show / update / hide the tooltip
-    var showTooltip = function(event, d) {
-        tooltip
-            .transition()
-            .duration(200)
-            .style("opacity", 1)
-            .html(
-                "Country: " + (d.country || "") + "<br/>" +
-                "Daily Income: " + (d["Avarage Daily Income"] || "") + "<br/>" +
-                "Population: " + (d["Population"] || "") + "<br/>" +
-                "Babies Per Woman: " + (d["Babies per Woman"] || "") + "<br/>" +
-                "Main Religion: " + (d["main_religion_2008"] || "")
-            )
-            .style("left", (d3.pointer(event)[0] + 30) + "px")
-            .style("top", (d3.pointer(event)[1] + 30) + "px");
-    }
-    var moveTooltip = function(event, d) {
-        tooltip
-            .style("left", (d3.pointer(event)[0] + 30) + "px")
-            .style("top", (d3.pointer(event)[1] + 30) + "px");
-    }
-    var hideTooltip = function() {
-        tooltip
-            .transition()
-            .duration(200)
-            .style("opacity", 0);
-    }
+    // X-Achsenbeschriftung
+    svg
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", margin.left + svgWidth / 2)
+      .attr("y", svgHeight + margin.top + margin.bottom + 10)
+      .style("font-size", "14px")
+      .text(xParam);
 
-    // Add dots
-    svg.append('g')
-        .selectAll("dot")
-        .data(data)
-        .enter()
-        .append("circle")
-            .attr("class", "bubbles")
-            .attr("cx", d => x(d["Avarage Daily Income"]))
-            .attr("cy", d => y(d["Babies per Woman"]))
-            .attr("r", d => z(d["Population"]))
-            .style("fill", d => myColor(d["world_4region"]))
-        // Trigger the functions (D3 v6 style handlers pass event, d)
-        .on("mouseover", showTooltip )
-        .on("mousemove", moveTooltip )
-        .on("mouseleave", hideTooltip );
+    svg
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .call(d3.axisLeft(scaleY));
 
-}).catch(function(error){
-    console.error("Error loading or parsing CSV:", error);
-});
+    // Y-Achsenbeschriftung
+    svg
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -(margin.top + svgHeight / 2))
+      .attr("y", 20)
+      .style("font-size", "14px")
+      .text(yParam);
+
+    var tooltip = d3
+      .select("#my-dataviz")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "black")
+      .style("border-radius", "5px")
+      .style("padding", "10px")
+      .style("color", "white");
+
+    let showTooltip = function (event, d) {
+      tooltip.transition().duration(200);
+      tooltip
+        .style("opacity", 1)
+        .html("Tooltip")
+        .style("left", event.pageX + 30 + "px")
+        .style("top", event.pageY + 30 + "px");
+    };
+
+    let moveTooltip = function (event, d) {
+      tooltip
+        .style("left", event.pageX + 30 + "px")
+        .style("top", event.pageY + 30 + "px");
+    };
+
+    let hideTooltip = function (d) {
+      tooltip.transition().duration(200).style("opacity", 0);
+    };
+
+    // Bubbles für die Länder erstellen
+    let chart = svg
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .selectAll("dot")
+      .data(dataset)
+      .enter()
+      .append("circle")
+      .attr("class", "bubbles")
+      .attr("cx", (d) => scaleX(parseFloat(d[xParam])))
+      .attr("cy", (d) => scaleY(parseFloat(d[yParam])))
+      .attr("r", (d) => scaleR(parseNumber(d[rParam])))
+      .style("fill", (d) => colorInt(d[colorParam]))
+      .style("opacity", 0.7)
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseleave", hideTooltip);
+  },
+  function (reason) {
+    d3.select("body").append("p").text("Could not load dataset");
+    console.error(reason);
+  },
+);

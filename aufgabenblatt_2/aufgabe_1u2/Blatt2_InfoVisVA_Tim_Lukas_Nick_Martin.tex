@@ -1,0 +1,121 @@
+\documentclass[10pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Übungsblatt 2}
+\lhead{Nick Martin, Tim Lukas}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+    \vspace*{1cm}
+    {\Large \textbf{Übungsblatt 2 - Informationsvisualisierung und Visual Analytics}}
+\end{center}
+\begin{center}
+    {\Large Nick Martin, Tim Lukas}
+    \vspace*{1cm}
+\end{center}
+
+% \section*{Aufgabe 1: Daten- und Task-Analyse}
+% 
+% \subsection*{\textit{What?} (Datenanalyse)}
+% \begin{itemize}
+%   \item \textbf{Datentyp:} bei den Rohdaten handelt es sich um eine \textbf{Tabelle}.
+%   \item \textbf{Items (Zeilen):} Die Items sind die 6 \textbf{Personen} (A - F). Jede Person stellt eine Entität dar. 
+%   \item \textbf{Attribute (Spalte):} Die Attribute sind die 5 \textbf{Programmiersprachen} (Java, Perl, JS, C\#, Python). 
+%     Sie beschreiben Eigenschaften der Items. 
+%   \item \textbf{Werte (Zellen):} Die Werte in den Zellen repräsentieren die Selbsteinschätzung der Kenntnisse einer Person für eine 
+%     bestimmte Programmiersprache, die Werte liegen auf einer Skala von 1-5. 
+% \end{itemize}
+% 
+% \paragraph{Attirbut Typen}
+% die Attribute der Tabelle entsprechen folgenden Klassifikationen:
+% \begin{itemize}
+%   \item \textbf{Personen:} Personen sind kategorische Attribute. Sie haben keine implizite Ordnung und dienen in dieser Tabelle 
+%     als eindeutiger Schlüssel, um auf die Werte eines Items zuzugreifen.
+%   \item \textbf{Programmiersprachen:} Auch die Programmiersprachen sind sind kategorische Attribute.
+%   \item \textbf{Werte der Selbsteinschätzung:} Die Selbsteinschätzungen sind ordinale Attribute. Es existiert eine klare Rangfolge (5 ist besser als 4),
+%     die Abstände zwischen den Werten sind jedoch weder quantifizierbar noch notwendigerweise gleichmäßig.
+% \end{itemize}
+% 
+% 
+% 
+% \subsection*{Why? (Task)}
+% Die gegebene Aufgabe \emph{"Wer ist der beste und wer der schlechteste Programmierer"} ist eine Domänenfrage. Sie ist:
+% \begin{itemize}
+%   \item \textbf{Mehrdeutig:} Die Definition von "bester" ist nicht klar. Ist es die Person mit konstant hohen Werten oder eher die Person mit Spitzenwerten
+%     in wenigen Kategorien?
+%   \item \textbf{Unpräzise:} Es wird keine klare Metrik für den Vergleich vorgegeben.
+%   \item \textbf{Nicht direkt ausführbar:} Die Frage kann nicht ohne weitere Annahmen direkt an die Daten gestellt werden.
+% \end{itemize}
+% 
+% Die Frage könnte in folgende Datenfragen übersetzt werden:
+% \begin{center}
+%   \textit{"Welche Person hat die höchste Summe an Fähigkeitspunkten über alle fünf Programmiersprachen, und welche die niedrigste?"}
+% \end{center}
+% 
+% 
+% \paragraph{Abstraktion der Aufgabe:}
+% Das übergeordnete Ziel ist der Vergleich der Gesamtkompetenzen aller Personen, um die Extremwerte zu identifizieren. Um dieses Ziel zu erreichen sind folgende
+% Aktionen erforderlich:
+% \begin{enumerate}
+%   \item \textbf{Zusammenfassen / Agregieren:}
+%     Da jede Person durch mehrere Attribute (fünf Programmiersprachen) beschrieben wird, kann kein direkter Verlgeich stattfinden. Zuerst müssen diese verschiedenen Werte
+%     für jede Person zu einem einzigen, repräsentativen Wert zusammengefasst werden.
+%       \begin{itemize}
+%         \item \textbf{Beispiel:} Berechnung der Summe oder des Medians der Fähigkeitswerte pro Person.
+%       \end{itemize}
+%   \item \textbf{Ordnen:} Die aus der Aggregation resultierenden Gesamtwerte werden anschließend genutzt, um eine Rangliste aller Personen zu erstellen. Diese Aktion bringt
+%     die Items(Personen) in eine explizite Reihenfolge.
+%   \item \textbf{Suchen/Identifizieren:} Im finalen Schritt müssen die beiden gesuchten Items aus der im vorherigen Schritt erstellten, geordneten Liste extrahiert werden:
+%     Die erste Person (der "beste") und die letzte Person (der "schlechteste").
+% \end{enumerate}
+% 
+% \vspace{1em}
+% \textbf{Ergebnis der Task-Abstraktion:} Die Aufgabe besteht darin, für eine Menge von Items (Personen) deren Attribute zu aggregieren,
+% um eine Rangordnung zu erstellen, aus der die Extremwerte identifiziert werden können.
+
+
+\section*{Aufgabe 2 - Datenattribute}
+\subsection*{Diskussion zwischen den in der Vorlesung vorgestellten und den in der Publikation vorgeschlagenen Attribut-Typen}
+
+Der primäre Unterschied zwischen der Klassifikation von S. S. Stevens und dem in der Vorlesung behandelten System liegt in ihrer jeweiligen Ausrichtung.
+Stevens Gliederung in Nominal-, Ordinal-, Intervall und Verhältnisskalen ist auf die statisitsche Analyse ausgelegt.
+Sie definiert, welche mathematischen Operationen für einen Datentyp zulässig sind, um die statistische Validität gewährleisten zu können.
+In der Vorlesung haben wird die Attribut-Typen kategorial, geordnet und quantitativ behandelt. Diese sind dagegen auf die grafische Darstellung von Daten
+ausgelegt. Die zentrale Frage hier ist, wie die Struktur der Daten am effektivsten und sinngemäß durch visuelle Kanäle (z.B. Farbe, Form und Position) dargestellt werden kann.
+
+Der größte Unterschied zwischen der Aufgliederung von S. S. Stevens' Attribut-Typen und dem in der Vorlesung behandelten System liegt in ihrer jeweiligen Fokus.
+Stevens' unterscheidet zwischen Nominal-, Ordinal-, Intervall- und Verhältnisskalen. Seine Einteilung ist auf die statistische Analyse ausgelegt.
+Sie definiert, welche mathematischen Operationen für einen Datentyp zulässig sind, damit die Ergebnisse statistisch sinvoll bleiben.
+In der Vorlesung haben wir die Attribut-Typen kategorial, geordnet und quantitativ bahandelt. Diese sind dagegen besser für die grafische Darstellung von Daten geeignet. 
+Dabei geht es vor allem darum, herauszufinden, wie die Daten am besten visualisiert werden können 
+(z. B. durch Farbe, Form oder Position), damit schnell erkannt werden kann was die Daten aussagen.
+
+Bei den Gemeinsamkeiten fällt auf, dass Stevens' Nominalskala direkt dem kategorialen Attributstyp entspricht, der in der Vorlesung behandelt wurde. 
+Auch die Ordinalskala entspricht dem geordneten (ordered) Typ aus der Vorlesung.
+
+Die größte Abweichung betrifftt die numerischen Daten. Stevens unterscheidet zwischen Intervallskalen, die keinen echten Nullpunkt besitzen (bspw. Celsius), 
+und Verhältnisskalen mit einem absoluten Nullpunkt (z.B. Größe). 
+Diese Trennung ist statistisch entscheidend, da Verhältnisse nur bei einem existierenden absoluten Nullpunkt sinnvoll sind. 
+Das in der Vorlesung behandelte Modell fasst beide Typen von Stevens zu einem einzigen quantitativen Typ zusammen. 
+Dies hat den Grund, dass für die grafische Umsetzung die Art des Nullpunkts in der Regel keine Rolle spielt. 
+Sowohl Intervall- als auch Verhältnisskalen werden üblicherweise durch dieselben visuellen Kanäle, wie die Position auf einer Achse oder die Balkenlänge, abgebildet.
+
+Abschließend lässt sich sagen, dass das in der Vorlesung behandelte System eine für die Informationsvisualisierung optimierte Version des Systems von Stevens ist. 
+Es vereinfacht Stevens’ strenge statistische Regeln zu einem Modell, das hilft, gute Design-Entscheidungen für die visuelle Darstellung von Daten zu treffen.
+
+
+\end{document}

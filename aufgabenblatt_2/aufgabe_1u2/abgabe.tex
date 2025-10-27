@@ -52,7 +52,7 @@ die Attribute der Tabelle entsprechen folgenden Klassifikationen:
 \begin{itemize}
   \item \textbf{Personen:} Personen sind kategorische Attribute. Sie haben keine implizite Ordnung und dienen in dieser Tabelle 
     als eindeutiger Schlüssel, um auf die Werte eines Items zuzugreifen.
-  \item \textbf{Programmiersprachen:} Auch die Programmiersprachen sind sind kategorische Attribute.
+  \item \textbf{Programmiersprachen:} Auch die Programmiersprachen sind kategorische Attribute.
   \item \textbf{Werte der Selbsteinschätzung:} Die Selbsteinschätzungen sind ordinale Attribute. Es existiert eine klare Rangfolge (5 ist besser als 4),
     die Abstände zwischen den Werten sind jedoch weder quantifizierbar noch notwendigerweise gleichmäßig.
 \end{itemize}
@@ -60,7 +60,7 @@ die Attribute der Tabelle entsprechen folgenden Klassifikationen:
 
 
 \subsection*{Why? (Task)}
-Bei der gegeben Fragestellung \emph{"Wer ist der beste und wer der schlechteste Programmierer"} handelt es sich um eine Domänenfrage.\newline
+Bei der gegeben Fragestellung \emph{"Wer ist der beste und wer der schlechteste Programmierer?"} handelt es sich um eine Domänenfrage.\newline
 Die Frage ist:
 \begin{itemize}
   \item \textbf{Mehrdeutig:} Die Definition von "bester" ist nicht klar. Ist es die Person mit konstant hohen Werten oder eher die Person mit Spitzenwerten
@@ -71,13 +71,13 @@ Die Frage ist:
 
 Die Frage könnte beispielsweise in folgende Datenfragen übersetzt werden:
 \begin{center}
-  \textit{"Welche Person hat die höchste Summe an Fähigkeitspunkten über alle fünf Programmiersprachen, und welche die niedrigste?"}
+  \textit{"Welche Person hat die höchste Summe an Fähigkeitspunkten über alle fünf Programmiersprachen und welche die niedrigste?"}
 \end{center}
 
 
 \paragraph{Abstraktion der Aufgabe:}
-Das übergeordnete Ziel ist der Vergleich der Programmierfähigkeiten aller Personen, um die Extremwerte zu erkennen. Um dieses Ziel zu erreichen sind folgende
-Aktionen notwendig:
+Das übergeordnete Ziel ist der Vergleich der Programmierfähigkeiten aller Personen, um die Extremwerte zu erkennen.
+Um dieses Ziel zu erreichen, sind folgende Aktionen notwendig:
 \begin{enumerate}
   \item \textbf{Zusammenfassen / Agregieren:}
     Da jede Person durch mehrere Attribute (fünf Programmiersprachen) beschrieben wird, kann kein direkter Verlgeich stattfinden. Zuerst müssen diese verschiedenen Werte
@@ -100,7 +100,6 @@ um eine Rangordnung zu erstellen, mit der die Extremwerte identifiziert werden k
 
 \section*{Aufgabe 2 - Datenattribute}
 \subsection*{Diskussion zwischen den in der Vorlesung vorgestellten und in der Publikation vorgeschlagenen Attribut-Typen}
-
 Der primäre Unterschied zwischen der Klassifikation von S. S. Stevens und dem in der Vorlesung behandelten System liegt in ihrer jeweiligen Ausrichtung.
 Stevens' Gliederung in Nominal-, Ordinal-, Intervall- und Verhältnisskalen ist auf die statistische Analyse ausgelegt.
 Sie definiert, welche mathematischen Operationen für einen Datentyp zulässig sind, um die statistische Validität gewährleisten zu können.
@@ -108,16 +107,14 @@ Die in der Vorlesung behandelten Kategorien Kategorial, Geordnet und Quantitativ
 Hierbei ist die zentrale Frage, wie die Struktur der Daten am effektivsten und sinngemäß durch visuelle Kanäle (z.B. Farbe, Form und Position) dargestellt werden kann.
 
 Betrachtet man die jeweils vorgeschlagenen Attributstypen fällt auf, dass Stevens' Nominalskala direkt dem in der Vorlesung behandelten kategorialen Attributstyp
-entspricht. Auch die Ordinalskala entspricht dem geordneten (ordered) Typ.
+entspricht. Die Ordinalskala entspricht dem geordneten (ordered) Typ.
 
-
-Die größte Abweichung liegt bei den numerischen Daten. Stevens unterscheidet streng zwischen Intervallskalen, die keinen echten Nullpunkt haben (bspw. Celsius), 
-und Verhältnisskalen mit einem absoluten Nullpunkt (z.B. Größe). 
-Diese Trennung ist statistisch entscheidend, da Verhältnisse nur bei einem absoluten Nullpunkt sinnvoll sind. 
-Das in der Vorlesung behandelte Modell fasst beide Typen zu einem einzigen quantitativen Typ zusammen, dies hat den Grund,
-dass für die grafische Umsetzung die Art des Nullpunkts meist keine Rolle spielt. 
-Sowohl Intervall- als auch Verhältnisskalen werden typischerweise durch dieselben visuellen Kanäle, wie die Position auf einer Achse oder die Balkenlänge, abgebildet.
-
+Die größte Abweichung betrifft die numerischen Daten. Stevens unterscheidet klar zwischen Intervallskalen, die keinen echten Nullpunkt besitzen (z.B. Celsius), und
+Verhältnisskalen, die einen absoluten Nullpunkt aufweisen (z.B. Körpergröße).
+Diese Unterscheidung ist statistisch relevant, da Verhältnisse nur dann sinnvoll gebildet werden können, wenn ein absoluter Nullpunkt existiert.
+Im in der Vorlesung behandelten Modell werden beide Skalentypen zu einem gemeinsamen quantitativen Typ zusammengefasst.
+Der Grund dafür ist, dass bei der grafischen Darstellung die Art des Nullpunkts in der Regel keine Rolle spielt.
+Sowohl Intervall- als auch Verhältnisskalen werden üblicherweise über dieselben visuellen Merkmale dargestellt, etwa durch die Position auf einer Achse oder die Länge eines Balkens.
 
 Abschließend lässt sich sagen, dass das in der Vorlesung behandelte Modell eine für den Anwendungsfall der Informationsvisualisierung optimierte Abstraktion ist. 
 Es vereinfacht Stevens' strenge statistische Regeln zu einem Modell, das Design-Entscheidungen für die effektive visuelle Repräsentation von Daten anleitet.

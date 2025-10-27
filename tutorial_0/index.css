@@ -1,21 +1,30 @@
 p {
-    font: 12pt sans-serif;
-    margin: 3px;
-    color: black;
+  font: 12pt sans-serif;
+  margin: 3px;
+  color: black;
 }
 
 label {
-    font: 10pt sans-serif;
-    padding: 3px;
+  font: 10pt sans-serif;
+  padding: 3px;
 }
 
 .chart {
-    background-color: #c7d9d9;
-    padding: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #c7d9d9;
+  padding: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .radioBtn {
-    margin-left: 10px;
-    font-size: 16px;
+  margin-left: 10px;
+  font-size: 16px;
 }
+
+.bubbles {
+  stroke-width: 2px;
+  stroke: white;
+}
+.bubbles:hover {
+  stroke: black;
+}
+
