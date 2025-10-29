@@ -1,4 +1,4 @@
-function parseNumber(num) {
+function parsePopulation(num) {
   var lastChar = num.slice(-1);
   if (lastChar == "B") {
     return parseFloat(num.substring(0, num.length - 1)) * 1_000_000_000;
@@ -14,8 +14,8 @@ function parseNumber(num) {
 d3.csv("gapminder.csv").then(
   function (dataset) {
     // Konstanten für Größen Angaben definierej
-    const svgWidth = 600;
-    const svgHeight = 400;
+    const svgWidth = 700;
+    const svgHeight = 500;
     const margin = {
       top: 20,
       right: 30,
@@ -34,15 +34,15 @@ d3.csv("gapminder.csv").then(
     let minY = d3.min(dataset, (d) => parseFloat(d[yParam]));
     let maxY = d3.max(dataset, (d) => parseFloat(d[yParam]));
 
-    let minR = d3.min(dataset, (d) => parseNumber(d[rParam]));
-    let maxR = d3.max(dataset, (d) => parseNumber(d[rParam]));
+    let minR = d3.min(dataset, (d) => parsePopulation(d[rParam]));
+    let maxR = d3.max(dataset, (d) => parsePopulation(d[rParam]));
 
-    console.log(minX);
-    console.log(maxX);
-    console.log(minY);
-    console.log(maxY);
-    console.log(minR);
-    console.log(maxR);
+    console.log("Min. Wert x:" + minX);
+    console.log("Max. Wert x:" + maxX);
+    console.log("Min. Wert y:" + minY);
+    console.log("Max. Wert y:" + maxY);
+    console.log("Min. Wert r:" + minR);
+    console.log("Max. Wert r:" + maxR);
 
     // Farbscale für die Bubbles basierend auf den Spalte world_4region
     let colorInt = d3
@@ -52,8 +52,6 @@ d3.csv("gapminder.csv").then(
         "#e74c3c",
         "#3498db",
         "#f39c12",
-        "#2ecc71",
-        "#9b59b6",
         "#1abc9c",
       ]);
 
@@ -66,21 +64,21 @@ d3.csv("gapminder.csv").then(
     // X-Skala basierend auf dem ermittelten minX und maxX Wert
     let scaleX = d3
       .scaleLinear()
-      .domain([minX, maxX])
-      .range([margin.left, svgWidth]);
+      .domain([0, maxX])
+      .range([0, svgWidth]);
 
     // Y-Skala basierend auf dem ermittelten minY und maxY Wert
     let scaleY = d3
       .scaleLinear()
       .domain([minY, maxY])
-      .range([svgHeight, margin.top]);
+      .range([svgHeight, 0]);
 
-    let scaleR = d3.scaleSqrt().domain([minR, maxR]).range([0, 50]);
+    let scaleR = d3.scaleSqrt().domain([minR, maxR]).range([3, 55]);
 
     // Skalen zur SVG hinzufügen
     svg
       .append("g")
-      .attr("transform", "translate(0," + (svgHeight + margin.top) + ")")
+      .attr("transform", "translate(" + margin.left + "," + (svgHeight + margin.top) + ")")
       .call(d3.axisBottom(scaleX));
 
     // X-Achsenbeschriftung
@@ -107,21 +105,28 @@ d3.csv("gapminder.csv").then(
       .style("font-size", "14px")
       .text(yParam);
 
-    var tooltip = d3
-      .select("#my-dataviz")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
+    var tooltip = d3.select("#visualisation-container")
+      .append("div") // <-- ÄNDERUNG: div statt rect
+      .attr("class", "tooltip") // Gib ihm eine Klasse zum Stylen
+      .style("opacity", 0) // Starte unsichtbar
+      .style("position", "absolute") // Wichtig, damit wir es frei positionieren können
       .style("background-color", "black")
       .style("border-radius", "5px")
       .style("padding", "10px")
-      .style("color", "white");
+      .style("color", "white")
+      .style("pointer-events", "none");
 
     let showTooltip = function (event, d) {
       tooltip.transition().duration(200);
       tooltip
         .style("opacity", 1)
-        .html("Tooltip")
+        .html(`
+        <div class="tooltip-country">${d["country"]}</div>
+        <div class="tooltip-continent">Kontinent: ${d["world_4region"]}</div>
+        <div class="tooltip-avg-income">Tägliches Einkommen: $${d["Average Daily Income"]}</div>
+        <div class="tooltip-population">Bevölkerung: ${d["Population"]}</div>
+        <div class="tooltip-fertility">Kinder pro Mutter: ${d["Babies per Woman"]}</div>
+        `,)
         .style("left", event.pageX + 30 + "px")
         .style("top", event.pageY + 30 + "px");
     };
@@ -147,7 +152,7 @@ d3.csv("gapminder.csv").then(
       .attr("class", "bubbles")
       .attr("cx", (d) => scaleX(parseFloat(d[xParam])))
       .attr("cy", (d) => scaleY(parseFloat(d[yParam])))
-      .attr("r", (d) => scaleR(parseNumber(d[rParam])))
+      .attr("r", (d) => scaleR(parsePopulation(d[rParam])))
       .style("fill", (d) => colorInt(d[colorParam]))
       .style("opacity", 0.7)
       .on("mouseover", showTooltip)

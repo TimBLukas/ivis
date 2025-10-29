@@ -15,14 +15,49 @@
     <div class="title-container">
       <h1>Aufgabenblatt 2 - Visualisierung</h1>
     </div>
-    <div class="visualisation-container">
+    <div id="visualisation-container">
       <!-- Visualisierung (wird mit d3 befüllt) -->
-      <svg id="my-dataviz"></svg>
+      <svg id="datavisualisierung"></svg>
     </div>
     <div class="legend-container">
-      <div class="color-legend">
-        <div class="color-representation"></div>
-        <p>Label</p>
+      <div class="info-panel">
+        <h2>Legende</h2>
+        <div class="info-content">
+          <div class="info-item">
+            <h3>X-Achse</h3>
+            <p>Durchschnittseinkommen pro Tag</p>
+          </div>
+          <div class="info-item">
+            <h3>Y-Achse</h3>
+            <p>Durchschnittliche Kinder pro Frau</p>
+          </div>
+          <div class="info-item">
+            <h3>Durchmesser Bubbles</h3>
+            <p>Bevölkerung</p>
+          </div>
+          <div class="info-item">
+            <h3>Farbgebung</h3>
+            <p>Kontinent</p>
+            <div class="continent-options">
+              <div class="continent-option">
+                <div class="color-demo"></div>
+                <p class="continent-label">Africa</p>
+              </div>
+              <div class="continent-option">
+                <div class="color-demo"></div>
+                <p class="continent-label">Amerikas</p>
+              </div>
+              <div class="continent-option">
+                <div class="color-demo"></div>
+                <p class="continent-label">Asien</p>
+              </div>
+              <div class="continent-option">
+                <div class="color-demo"></div>
+                <p class="continent-label">Europa</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

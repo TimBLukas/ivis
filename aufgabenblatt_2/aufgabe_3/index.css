@@ -8,3 +8,28 @@
 .title-container {
     margin-top: 20px;
 }
+
+.tooltip {
+  color: red
+}
+
+.tooltip-country {
+  font-size: 15px;
+  color: red;
+}
+
+.tooltip-continent {
+
+}
+
+.tooltip-avg-income {
+
+}
+
+.tooltip-population {
+
+}
+
+.tooltip-fertility {
+
+}
