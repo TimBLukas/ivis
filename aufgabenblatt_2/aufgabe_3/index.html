@@ -19,21 +19,28 @@
       <!-- Visualisierung (wird mit d3 befüllt) -->
       <svg id="datavisualisierung"></svg>
     </div>
+    <div class="config-container">
+      <h2>Konfiguration</h2>
+      <p>Welche Kontinente sollen in der Visualisierung angezeigt werden?</p>
+      <div id="config-controll-container">
+        <!-- Wird mit d3 mit Konfigruationselementen befüllt -->
+      </div>
+    </div>
     <div class="legend-container">
       <div class="info-panel">
         <h2>Legende</h2>
         <div class="info-content">
           <div class="info-item">
             <h3>X-Achse</h3>
-            <p>Durchschnittseinkommen pro Tag</p>
+            <div id="x-axis-content"></div>
           </div>
           <div class="info-item">
             <h3>Y-Achse</h3>
-            <p>Durchschnittliche Kinder pro Frau</p>
+            <div id="y-axis-content"></div>
           </div>
           <div class="info-item">
             <h3>Durchmesser Bubbles</h3>
-            <p>Bevölkerung</p>
+            <div id="radius-content"></div>
           </div>
           <div class="info-item">
             <h3>Farbgebung</h3>
@@ -65,4 +72,3 @@
     <script src="main.js"></script>
   </body>
 </html>
-
