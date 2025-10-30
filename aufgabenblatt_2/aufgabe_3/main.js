@@ -11,16 +11,6 @@ function parsePopulation(num) {
   }
 }
 
-// globale Variablen definieren
-let minX;
-let maxX;
-
-let minY;
-let maxY;
-
-let minR;
-let maxR;
-
 d3.csv("gapminder.csv").then(
   function (dataset) {
     // Konstanten für Größen Angaben definierej
@@ -38,22 +28,14 @@ d3.csv("gapminder.csv").then(
     let rParam = "Population";
     let colorParam = "world_4region";
 
-    minX = d3.min(dataset, (d) => parseFloat(d[xParam]));
-    maxX = d3.max(dataset, (d) => parseFloat(d[xParam]));
+    let minX = d3.min(dataset, (d) => parseFloat(d[xParam]));
+    let maxX = d3.max(dataset, (d) => parseFloat(d[xParam]));
 
-    minY = d3.min(dataset, (d) => parseFloat(d[yParam]));
-    maxY = d3.max(dataset, (d) => parseFloat(d[yParam]));
+    let minY = d3.min(dataset, (d) => parseFloat(d[yParam]));
+    let maxY = d3.max(dataset, (d) => parseFloat(d[yParam]));
 
-    minR = d3.min(dataset, (d) => parsePopulation(d[rParam]));
-    maxR = d3.max(dataset, (d) => parsePopulation(d[rParam]));
-
-    console.log("Min. Wert x:" + minX);
-    console.log("Max. Wert x:" + maxX);
-    console.log("Min. Wert y:" + minY);
-    console.log("Max. Wert y:" + maxY);
-    console.log("Min. Wert r:" + minR);
-    console.log("Max. Wert r:" + maxR);
-
+    let minR = d3.min(dataset, (d) => parsePopulation(d[rParam]));
+    let maxR = d3.max(dataset, (d) => parsePopulation(d[rParam]));
     // Farbscale für die Bubbles basierend auf den Spalte world_4region
     let colorInt = d3
       .scaleOrdinal()
@@ -221,10 +203,11 @@ d3.csv("gapminder.csv").then(
         .transition()
         .duration(300)
         .style("opacity", (d) => {
-          // Nur wenn der Kontinent im Filter enthalten ist diesen sichtbar gestalten
+          // Nur wenn der Kontinent im Filter enthalten ist, soll die Bubble sichtbar sein
           return activeFilters.has(d[colorParam]) ? 0.7 : 0;
         })
         .style("pointer-events", (d) => {
+          // Pointer nur, wenn die jeweilige Bubble auch angezeigt wird
           return activeFilters.has(d[colorParam]) ? "all" : "none";
         });
     }
