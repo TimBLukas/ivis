@@ -51,7 +51,7 @@ d3.csv("gapminder.csv").then(
       top: 20,
       right: 30,
       bottom: 30,
-      left: 100,
+      left: 60,
     };
 
     let xParam = "Average Daily Income";
