@@ -45,8 +45,8 @@ d3.csv("gapminder.csv").then(
    */
   function (dataset) {
     // Konstanten für Größe und Margins
-    const svgWidth = 900;
-    const svgHeight = 600;
+    const svgWidth = 800;
+    const svgHeight = 500;
     const margin = {
       top: 20,
       right: 30,
@@ -56,7 +56,7 @@ d3.csv("gapminder.csv").then(
 
     let xParam = "Average Daily Income";
     let yParam = "Babies per Woman";
-    let rParam = "Population";
+    let dParam = "Population";
     let colorParam = "world_4region";
 
     // Extrema der festgelegten Paramter bestimmen bestimmen
@@ -66,8 +66,8 @@ d3.csv("gapminder.csv").then(
     let minY = d3.min(dataset, (d) => parseFloat(d[yParam]));
     let maxY = d3.max(dataset, (d) => parseFloat(d[yParam]));
 
-    let minR = d3.min(dataset, (d) => parsePopulation(d[rParam]));
-    let maxR = d3.max(dataset, (d) => parsePopulation(d[rParam]));
+    let minD = d3.min(dataset, (d) => parsePopulation(d[dParam]));
+    let maxD = d3.max(dataset, (d) => parsePopulation(d[dParam]));
 
     // Farbskala basierend auf den in der Spalte world_4region enthaltenen Möglichkeiten
     let colorInt = d3
@@ -87,7 +87,7 @@ d3.csv("gapminder.csv").then(
     // Y-Skala basierend auf dem ermittelten minY und maxY Wert
     let scaleY = d3.scaleLinear().domain([minY, maxY]).range([svgHeight, 0]);
 
-    let scaleR = d3.scaleSqrt().domain([minR, maxR]).range([5, 55]);
+    let scaleD = d3.scaleSqrt().domain([minD, maxD]).range([5, 55]);
 
     // Skalen zur SVG hinzufügen
     svg
@@ -175,7 +175,7 @@ d3.csv("gapminder.csv").then(
       .attr("class", "bubbles")
       .attr("cx", (d) => scaleX(parseFloat(d[xParam])))
       .attr("cy", (d) => scaleY(parseFloat(d[yParam])))
-      .attr("r", (d) => scaleR(parsePopulation(d[rParam])))
+      .attr("r", (d) => scaleD(parsePopulation(d[dParam])))
       .style("fill", (d) => colorInt(d[colorParam]))
       .style("opacity", 0.7)
       .on("mouseover", showTooltip)
@@ -294,7 +294,7 @@ d3.csv("gapminder.csv").then(
         .text(`Maximalwert: ${maxY}`);
     }
 
-    if (minR != null && maxR != null) {
+    if (minD != null && maxD != null) {
       const legendDiv = d3.select("#radius-content").append("div");
 
       legendDiv
@@ -305,12 +305,12 @@ d3.csv("gapminder.csv").then(
       legendDiv
         .append("p")
         .attr("class", "legend-min-value")
-        .text(`Minimalwert: ${reconvertPopulation(minR)}`);
+        .text(`Minimalwert: ${reconvertPopulation(minD)}`);
 
       legendDiv
         .append("p")
         .attr("class", "legend-max-value")
-        .text(`Maximalwert: ${reconvertPopulation(maxR)}`);
+        .text(`Maximalwert: ${reconvertPopulation(maxD)}`);
     }
   },
   function (reason) {
