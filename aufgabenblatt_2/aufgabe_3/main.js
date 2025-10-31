@@ -1,8 +1,8 @@
 /**
  * Konvertiert die Bevölkerungsanzahl
- *  von: 1B, 12M, 123K 
+ *  von: 1B, 12M, 123K
  *  zu: 1_000_000_000, 12_000_000, 123_000
- * @param num Bevölkerungsanzahl die konvertiert werden soll 
+ * @param num Bevölkerungsanzahl die konvertiert werden soll
  * @returns Konvertierte Bevölkerungszahl als Float
  */
 function parsePopulation(num) {
@@ -18,10 +18,29 @@ function parsePopulation(num) {
   }
 }
 
+/**
+ * Rekonvertiert die Bevölkerungszahl, für ansprechendere Ausgaben
+ *  von: 1_000_000_000, 12_000_000, 123_000
+ *  zu: 1B, 12M, 123K
+ * @param num Bevölkerungsanzahl die rekonvertiert werden soll
+ * @returns Rekonvertierte Bevölkerungszahl als String
+ */
+function reconvertPopulation(num) {
+  if (num > 1_000_000_000) {
+    return `${num / 1_000_000_000} B`;
+  } else if (num > 1_000_000) {
+    return `${num / 1_000_000} M`;
+  } else if (num > 10_000) {
+    return `${num / 1_000} K`;
+  } else {
+    return `${num}`;
+  }
+}
+
 // Visualisierung erstellen
 d3.csv("gapminder.csv").then(
   /**
-   * 
+   *
    * @param dataset Datenset, das in den Graph konvertiert werden soll
    */
   function (dataset) {
@@ -106,10 +125,10 @@ d3.csv("gapminder.csv").then(
     // Tooltip für das Hovern über den Bubbles
     var tooltip = d3
       .select("#visualisation-container")
-      .append("div") 
-      .attr("class", "tooltip") 
-      .style("opacity", 0) 
-      .style("position", "absolute") 
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0)
+      .style("position", "absolute")
       .style("background-color", "white")
       .style("border-radius", "10px")
       .style("padding", "10px")
@@ -186,7 +205,11 @@ d3.csv("gapminder.csv").then(
     continents.forEach((continent) => {
       const checkboxWrapper = configControlContainer
         .append("div")
-        .attr("class", "checkbox-wrapper");
+        .attr("class", "checkbox-wrapper")
+        // Um die Beziehung zwischen Kontinent und zugehörigen Bubbles zu verdeutlichen (passend gefärbte Border)
+        .style("border", "2px solid " + colorInt(continent.id))
+        .style("border-radius", "5px")
+        .style("padding", "5px");
 
       checkboxWrapper
         .append("input")
@@ -244,12 +267,12 @@ d3.csv("gapminder.csv").then(
       legendDiv
         .append("p")
         .attr("class", "legend-min-value")
-        .text(`Minimalwert: ${minX}`);
+        .text(`Minimalwert: ${minX} €/Tag`);
 
       legendDiv
         .append("p")
         .attr("class", "legend-max-value")
-        .text(`Maximalwert: ${maxX}`);
+        .text(`Maximalwert: ${maxX} €/Tag`);
     }
 
     if (minY != null && maxY != null) {
@@ -282,12 +305,12 @@ d3.csv("gapminder.csv").then(
       legendDiv
         .append("p")
         .attr("class", "legend-min-value")
-        .text(`Minimalwert: ${minR}`);
+        .text(`Minimalwert: ${reconvertPopulation(minR)}`);
 
       legendDiv
         .append("p")
         .attr("class", "legend-max-value")
-        .text(`Maximalwert: ${maxR}`);
+        .text(`Maximalwert: ${reconvertPopulation(maxR)}`);
     }
   },
   function (reason) {

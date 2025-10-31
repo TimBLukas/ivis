@@ -1,3 +1,6 @@
+/*
+* Allgemeine Styles 
+*/
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +15,9 @@ body {
   padding: 40px 20px;
 }
 
+/*
+* Title Styles
+*/
 .title-container {
   max-width: 1400px;
   margin: 0 auto 30px auto;
@@ -25,6 +31,10 @@ body {
   font-weight: 700;
   letter-spacing: -0.5px;
 }
+
+/*
+* Visuallisierung und Visualisierungscontainer
+*/
 
 #visualisation-container {
   max-width: 1400px;
@@ -55,6 +65,10 @@ body {
   padding: 40px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
+
+/*
+* Konfigurationselemente
+*/
 
 .config-container {
   margin-bottom: 30px;
@@ -198,6 +212,10 @@ body {
   margin: 0;
 }
 
+/**
+* Animations Angaben
+*/
+
 .title-container,
 #visualisation-container,
 .legend-container {
@@ -221,7 +239,7 @@ body {
 }
 
 /*
-* Design für das beim hovern angezeigt Div
+* Design für das beim hovern angezeigt Div (Tooltip)
 */
 .tooltip {
   background-color: white;
