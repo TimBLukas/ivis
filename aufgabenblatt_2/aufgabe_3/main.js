@@ -46,7 +46,7 @@ d3.csv("gapminder.csv").then(
   function (dataset) {
     // Konstanten für Größe und Margins
     const svgWidth = 800;
-    const svgHeight = 500;
+    const svgHeight = 600;
     const margin = {
       top: 20,
       right: 30,

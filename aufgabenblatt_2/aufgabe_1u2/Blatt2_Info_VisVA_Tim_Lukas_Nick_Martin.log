@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  27 OCT 2025 17:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.8)  2 NOV 2025 17:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Blatt2_InfoVisVA_Tim_Lukas_Nick_Martin.tex
-(./Blatt2_InfoVisVA_Tim_Lukas_Nick_Martin.tex
+**Blatt2_Info_VisVA_Tim_Lukas_Nick_Martin.tex
+(./Blatt2_Info_VisVA_Tim_Lukas_Nick_Martin.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (/opt/texlive/2025/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(/opt/texlive/2025/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+(/opt/texlive/2025/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count275
 \c@section=\count276
@@ -159,8 +159,8 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count298
 )
-(./Blatt2_InfoVisVA_Tim_Lukas_Nick_Martin.aux)
-\openout1 = `Blatt2_InfoVisVA_Tim_Lukas_Nick_Martin.aux'.
+No file Blatt2_Info_VisVA_Tim_Lukas_Nick_Martin.aux.
+\openout1 = `Blatt2_Info_VisVA_Tim_Lukas_Nick_Martin.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
@@ -176,7 +176,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -196,12 +195,12 @@ LaTeX Font Info:    ... okay on input line 20.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=57.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -215,38 +214,66 @@ LaTeX Font Info:    ... okay on input line 20.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.51453pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.51453pt}.
+(fancyhdr)                Make it at least 15.04742pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.04742pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.51453pt}.
+(fancyhdr)                \addtolength{\topmargin}{-3.04742pt}.
 
 [1{/opt/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/opt/texlive
 /2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 
-]
-(./Blatt2_InfoVisVA_Tim_Lukas_Nick_Martin.aux)
+{/opt/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Overfull \hbox (46.26436pt too wide) in paragraph at lines 77--79
+[]\T1/cmr/bx/n/12 Search: \T1/cmr/m/n/12 Um An-schlieÿend basierend auf diesem 
+neu er-stell-ten Wert den besten/schlechtesten
+ []
+
+
+Overfull \hbox (9.96062pt too wide) in paragraph at lines 150--153
+\T1/cmr/m/n/12 Die Vi-su-al-isierung zeigt den Zusam-men-hang zwis-chen dem dur
+ch-schnit-tlichen Tage-seinkom-
+ []
+
+
+Overfull \hbox (0.1102pt too wide) in paragraph at lines 160--162
+[]\T1/cmr/m/n/12 Die Vi-su-al-isierung eignet sich fol-glich, um die Zusam-men-
+hänge zwis-chen der ökonomis-
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.04742pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.04742pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.04742pt}.
+
+[2] (./Blatt2_Info_VisVA_Tim_Lukas_Nick_Martin.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2839 strings out of 467748
- 40939 string characters out of 5404041
- 447809 words of memory out of 5000000
- 31560 multiletter control sequences out of 15000+600000
- 631567 words of font info for 45 fonts, out of 8000000 for 9000
+ 2847 strings out of 467748
+ 40983 string characters out of 5404041
+ 447842 words of memory out of 5000000
+ 31565 multiletter control sequences out of 15000+600000
+ 633685 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,65p,254b,294s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</opt/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></opt/
-texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></opt/texlive/
-2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></opt/texlive/2025/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
-Output written on Blatt2_InfoVisVA_Tim_Lukas_Nick_Martin.pdf (1 page, 69802 byt
-es).
+ 57i,11n,65p,255b,314s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbi1440.pfb></opt/
+texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></opt/texlive/
+2025/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></opt/texlive/2025/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></opt/texlive/2025/texmf-dist/
+fonts/type1/public/cm-super/sfrm1200.pfb></opt/texlive/2025/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm1728.pfb>
+Output written on Blatt2_Info_VisVA_Tim_Lukas_Nick_Martin.pdf (2 pages, 113624 
+bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
- 17 compressed objects within 1 object stream
+ 46 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,165 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Übungsblatt 2}
+\lhead{Nick Martin, Tim Lukas}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+    \vspace*{1cm}
+    {\Large \textbf{Übungsblatt 2 - Informationsvisualisierung und Visual Analytics}}
+\end{center}
+\begin{center}
+    {\Large Nick Martin, Tim Lukas}
+    \vspace*{1cm}
+\end{center}
+
+\section*{Aufgabe 1: Daten- und Task-Analyse}
+
+\subsection*{\textit{What?} (Datenanalyse)}
+Bei den gegebenen Rohdaten handelt es sich um eine zweidimensionale Tabelle.
+Die Items (Zeilen dieser Tabelle) sind sechs individuelle Personen identifiziert von A bis F, wobei jede Person eine eindeutige Entität darstellt.
+Diese Personen werden durch fünf Attribute (Spalten) beschrieben: dabei handelt es sich um die Programmiersprachen Java, Perl, JavaScript, C\#, Python.
+In den Zellen der Tabelle werden die jeweiligen Werte angegeben, welche die Selbsteinschätzung der jeweiligen Person für eine spezifische Programmiersprache
+repräsentieren. Diese Werte liegen auf einer Skala von 1 bis 5, bei diesen Werten gilt: Je höher der Wert, desto besser die Selbsteinschätzung in der jeweiligen Programmiersprache.
+
+% Aufzählung durch Fließtext ersetzt
+% \begin{itemize}
+%   \item \textbf{Datentyp:} bei den Rohdaten handelt es sich um eine \textbf{Tabelle}.
+%   \item \textbf{Items (Zeilen):} Die Items sind die 6 \textbf{Personen} (A - F). Jede Person stellt eine Entität dar. 
+%   \item \textbf{Attribute (Spalte):} Die Attribute sind die 5 \textbf{Programmiersprachen} (Java, Perl, JS, C\#, Python). 
+%     Sie beschreiben Eigenschaften der Items. 
+%   \item \textbf{Werte (Zellen):} Die Werte in den Zellen repräsentieren die Selbsteinschätzung der Kenntnisse einer Person für eine 
+%     bestimmte Programmiersprache, die Werte liegen auf einer Skala von 1-5. 
+% \end{itemize}
+
+\paragraph{Attirbut Typen}
+die Attribute der Tabelle entsprechen folgenden Klassifikationen:
+\begin{itemize}
+  \item \textbf{Personen:} Personen sind kategorische Attribute. Sie haben keine implizite Ordnung und dienen in dieser Tabelle 
+    als eindeutiger Schlüssel, um auf die Werte eines Items zuzugreifen.
+  \item \textbf{Programmiersprachen:} Auch die Programmiersprachen sind kategorische Attribute.
+  \item \textbf{Werte der Selbsteinschätzung:} Die Selbsteinschätzungen sind ordinale Attribute. Es existiert eine klare Rangfolge (5 ist besser als 4),
+    die Abstände zwischen den Werten sind jedoch weder quantifizierbar noch notwendigerweise gleichmäßig.
+\end{itemize}
+
+\subsection*{Why? (Task)}
+\textbf{Ziel:} Die gestellte Aufgabe ("Wer ist der bester und wer der schlechteste Programmierer"), bei der es sich um eine Domänenfrage handelt
+in allgemeine Aktionen (Actions) und deren Ziele (Targets) zerlegen.
+
+\paragraph{Ziele (Targets)}
+\begin{itemize}
+  \item \textbf{Attributes -> Extremwerte:} Das primäre Ziel ist es, die Extremwerte in den Selbsteinschätzungen zu ermitteln.
+    Es wird nach den Personen mit der höchsten Gesamteinschätzung (Maximum) und der Person mit der niedrigsten (Minimum) gesucht.
+\end{itemize}
+
+\paragraph{Aktionen (Actions):} Um jedoch die Extremwerte verwenden zu können, müssen die verschiedenen Attribute (Programmiersprachen) zu einem repräsentativen Wert,
+der die Gesamtfähigkeiten wiederspiegelt zusammengefasst werden.
+Dieses Vorgehen kann folgendermaßen beschrieben werden:
+\begin{itemize}
+  \item \textbf{Produce:} Um den besten/schlechtesten Programmierer über alle Attibute zu ermitteln, muss ein neuer Wert ergänzt (produced) werden,
+    der einen repräsentativen Gesamtwert darstellt. Dieser Wert kann aus den vorhandenen Daten abgeleitet werden (Derive). Eine Möglichkeit hierfür
+    wäre das Summieren der Werte.
+  \item \textbf{Search:} Um Anschließend basierend auf diesem neu erstellten Wert den besten/schlechtesten Programmierer müssen nur die Extremwerte
+    ermittelt werden (Suche mit bekanntem Ort und bekanntem Ziel).
+  \item \textbf{Identify:} Nach dem Vergleich müssen die Personen identifiziert werden, die die Kriterien "beste" und "schlechteste" erfüllen (Extremwerte).
+\end{itemize}
+
+\noindent Es ist also notwendig einen neuen Wert zu ergänzen (Produce), dieser Wert kann aus den vorhanden Daten abgeleitet werden (Derive)
+
+
+% Alte Version der Formulierung von Why 
+
+% \subsection*{Why? (Task)}
+% Bei der gegeben Fragestellung \emph{"Wer ist der beste und wer der schlechteste Programmierer?"} handelt es sich um eine Domänenfrage.\newline
+% Die Frage ist:
+% \begin{itemize}
+%   \item \textbf{Mehrdeutig:} Die Definition von "bester" ist nicht klar. Ist es die Person mit konstant hohen Werten oder eher die Person mit Spitzenwerten
+%     in wenigen Kategorien?
+%   \item \textbf{Unpräzise:} Es wird keine klare Metrik für den Vergleich vorgegeben.
+%   \item \textbf{Nicht direkt ausführbar:} Die Frage kann nicht ohne weitere Annahmen direkt an die Daten gestellt werden.
+% \end{itemize}
+% 
+% Die Frage könnte beispielsweise in folgende Datenfragen übersetzt werden:
+% \begin{center}
+%   \textit{"Welche Person hat die höchste Summe an Fähigkeitspunkten über alle fünf Programmiersprachen und welche die niedrigste?"}
+% \end{center}
+% 
+% 
+% \paragraph{Abstraktion der Aufgabe:}
+% Das übergeordnete Ziel ist der Vergleich der Programmierfähigkeiten aller Personen, um die Extremwerte zu erkennen.
+% Um dieses Ziel zu erreichen, sind folgende Aktionen notwendig:
+% \begin{enumerate}
+%   \item \textbf{Zusammenfassen / Agregieren:}
+%     Da jede Person durch mehrere Attribute (fünf Programmiersprachen) beschrieben wird, kann kein direkter Verlgeich stattfinden. Zuerst müssen diese verschiedenen Werte
+%     für jede Person zu einem einzigen, repräsentativen Gesamtwert zusammengefasst werden.
+%       \begin{itemize}
+%         \item \textbf{Beispiel:} Berechnung der Summe oder des Medians der Fähigkeitswerte pro Person.
+%       \end{itemize}
+%   \item \textbf{Ordnen:} Die aus der Aggregation resultierenden Gesamtwerte können dann verwendet werden, um eine Rangliste aller Personen zu erstellen. Diese Aktion bringt
+%     die Items(Personen) in eine explizite Reihenfolge.
+%   \item \textbf{Suchen/Identifizieren:} Im finalen Schritt müssen die beiden gesuchten Items aus der im vorherigen Schritt erstellten, geordneten Liste extrahiert werden:
+%     Die erste Person (der "beste") und die letzte Person (der "schlechteste").
+% \end{enumerate}
+% 
+% 
+% \vspace{1em}
+% \textbf{Ergebnis der Task-Abstraktion:} Die Aufgabe besteht darin, die Attribute einer Menge von Items (Personen) zu aggregieren,
+% um eine Rangordnung zu erstellen, mit der die Extremwerte identifiziert werden können.
+
+
+
+% \section*{Aufgabe 2 - Datenattribute}
+% \subsection*{Diskussion zwischen den in der Vorlesung vorgestellten und in der Publikation vorgeschlagenen Attribut-Typen}
+% Der primäre Unterschied zwischen der Klassifikation von S. S. Stevens und dem in der Vorlesung behandelten System liegt in ihrer jeweiligen Ausrichtung.
+% Stevens' Gliederung in Nominal-, Ordinal-, Intervall- und Verhältnisskalen ist auf die statistische Analyse ausgelegt.
+% Sie definiert, welche mathematischen Operationen für einen Datentyp zulässig sind, um die statistische Validität gewährleisten zu können.
+% Die in der Vorlesung behandelten Kategorien Kategorial, Geordnet und Quantitativ sind hingegen auf die grafische Umsetzung ausgelegt. 
+% Hierbei ist die zentrale Frage, wie die Struktur der Daten am effektivsten und sinngemäß durch visuelle Kanäle (z.B. Farbe, Form und Position) dargestellt werden kann.
+% 
+% Betrachtet man die jeweils vorgeschlagenen Attributstypen fällt auf, dass Stevens' Nominalskala direkt dem in der Vorlesung behandelten kategorialen Attributstyp
+% entspricht. Die Ordinalskala entspricht dem geordneten (ordered) Typ.
+% 
+% Die größte Abweichung betrifft die numerischen Daten. Stevens unterscheidet klar zwischen Intervallskalen, die keinen echten Nullpunkt besitzen (z.B. Celsius), und
+% Verhältnisskalen, die einen absoluten Nullpunkt aufweisen (z.B. Körpergröße).
+% Diese Unterscheidung ist statistisch relevant, da Verhältnisse nur dann sinnvoll gebildet werden können, wenn ein absoluter Nullpunkt existiert.
+% Im in der Vorlesung behandelten Modell werden beide Skalentypen zu einem gemeinsamen quantitativen Typ zusammengefasst.
+% Der Grund dafür ist, dass bei der grafischen Darstellung die Art des Nullpunkts in der Regel keine Rolle spielt.
+% Sowohl Intervall- als auch Verhältnisskalen werden üblicherweise über dieselben visuellen Merkmale dargestellt, etwa durch die Position auf einer Achse oder die Länge eines Balkens.
+% 
+% Abschließend lässt sich sagen, dass das in der Vorlesung behandelte Modell eine für den Anwendungsfall der Informationsvisualisierung optimierte Abstraktion ist. 
+% Es vereinfacht Stevens' strenge statistische Regeln zu einem Modell, das Design-Entscheidungen für die effektive visuelle Repräsentation von Daten anleitet.
+
+
+\section*{Aufgabe 3 - Erklärung zur Visualisierung}
+
+Die Visualisierung zeigt den Zusammenhang zwischen dem durchschnittlichen Tageseinkommen (x-Achse)
+und der durchschnittlichen Kinderzahl pro Frau (y-Achse) in verschiedenen Ländern.
+Die Größe der Kreise repräsentiert die jeweilige Bevölkerungszahl, während die Farbe die Zugehörigkeit zu einem Kontinent anzeigt.
+
+Es ist ein deutlicher negativer Zusammenhang erkennbar: Mit steigendem Einkommen sinkt die durchschnittliche
+Kinderzahl pro Frau. Länder mit niedrigerem Einkommen weisen tendenziell höhere Geburtenraten auf.
+Dieser Zusammenhang wird besonders im Vergleich zwischen den Kontinenten Europa und Afrika deutlich. Während der Großteil der
+afrikanischen Länder eine hohe Geburtenrate bei geringem Durchschnittseinkommen aufweist, zeigt sich in den eruopäischen Ländern
+ein gegenteiliges Bild: Die meisten verfügen über höhere Einkommen und niedrigere Geburtenraten.
+
+Die Visualisierung eignet sich folglich, um die Zusammenhänge zwischen der ökonomischen Situation eines Lands bzw. dessen Einwohnern
+und dessen demografischer Entwicklung aufzuzeigen. Zudem ermöglicht sie einen direkten Vergleich zwischen den einzelnen Ländern und Kontinenten.
+
+\end{document}
+
+\end{document}
